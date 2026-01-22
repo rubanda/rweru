@@ -14,7 +14,6 @@ function ExampleWrapper({ className, ...props }: React.ComponentProps<"div">) {
     </div>
   )
 }
-
 function Example({
   title,
   children,
