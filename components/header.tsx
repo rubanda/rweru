@@ -117,7 +117,7 @@ export function Header() {
                         Contact
                     </Link>
 
-                    <div className="mt-8 flex items-center gap-4">
+                    {/* <div className="mt-8 flex items-center gap-4">
                         <div
                             className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-14 border-2 border-primary/20"
                             style={{
@@ -125,7 +125,7 @@ export function Header() {
                                     'url("https://lh3.googleusercontent.com/aida-public/AB6AXuD0Ut_QWI1n6y7b1_4u_SSTPkBnxHf6GenASeF49P5617PqdUC963_1sAYn6j6t7LZrBb-Y913C02P1TRsSIxS4Nmg_DSJaPCGN-3Qq0BCaApJGWUeSKPfdqLM5r77sMgCcaAQeHrUbD8jm-MdD-NDEe0d3C8aW9LAXLHfkFC-LfbsKJhkEzGwmA8-NJPE01QvzjWh-r7EA0MMxQ4xW-SB79smF-1lBYiwgSXRnr4_t6Oqikiqwo3vF73t7ZyC-SqdzYzdFNaLoXoQ")',
                             }}
                         ></div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </header>
