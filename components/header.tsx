@@ -32,49 +32,51 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-[background-color,backdrop-filter] duration-300 ${
-        scrolled || isMenuOpen
-          ? "bg-ivory-medium/80 backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="site-container flex h-[4.25rem] items-center justify-between gap-6">
-        <Logo onClick={() => setIsMenuOpen(false)} />
+    <header className="sticky top-0 z-50">
+      <div
+        className={`transition-[background-color,backdrop-filter] duration-300 ${
+          scrolled || isMenuOpen
+            ? "bg-ivory-medium/80 backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="site-container flex h-[4.25rem] items-center justify-between gap-6">
+          <Logo onClick={() => setIsMenuOpen(false)} />
 
-        <div className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-slate/80 transition-colors duration-200 hover:text-slate"
-            >
-              {link.label}
+          <div className="hidden items-center gap-8 lg:flex">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-slate/80 transition-colors duration-200 hover:text-slate"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Link href="/contact" className="btn-primary hidden sm:inline-flex">
+              Talk to us
             </Link>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className="btn-primary hidden sm:inline-flex">
-            Talk to us
-          </Link>
-          <button
-            type="button"
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="flex size-10 items-center justify-center rounded-lg text-slate transition-colors hover:bg-slate/5 lg:hidden"
-            onClick={() => setIsMenuOpen((open) => !open)}
-          >
-            <span className="sr-only">Menu</span>
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-              {isMenuOpen ? (
-                <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.5" />
-              ) : (
-                <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" strokeWidth="1.5" />
-              )}
-            </svg>
-          </button>
-        </div>
-      </nav>
+            <button
+              type="button"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              className="flex size-10 items-center justify-center rounded-lg text-slate transition-colors hover:bg-slate/5 lg:hidden"
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              <span className="sr-only">Menu</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                {isMenuOpen ? (
+                  <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.5" />
+                ) : (
+                  <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" strokeWidth="1.5" />
+                )}
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
 
       <div
         className={`fixed inset-x-0 top-[4.25rem] bottom-0 z-40 bg-ivory-medium transition-opacity duration-300 lg:hidden ${
