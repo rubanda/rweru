@@ -1,82 +1,91 @@
-
 export type BlogPost = {
-    slug: string;
-    title: string;
-    excerpt: string;
-    author: {
-        name: string;
-        role: string;
-        avatar: string; // URL to avatar image
-    };
-    date: string;
-    category: string;
-    image: string; // URL to cover image
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
+  date: string;
+  category: string;
+  image: string;
 };
 
 export const blogPosts: BlogPost[] = [
-    {
-        slug: "modern-systems-development",
-        title: "The Future of Modern Systems Development",
-        excerpt: "TL;DR: How microservices, serverless, and edge computing are reshaping the way we build scalable backends.",
-        author: {
-            name: "Alex Rivera",
-            role: "Senior Systems Engineer",
-            avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Alex",
-        },
-        date: "Oct 24, 2025",
-        category: "Systems",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
+  {
+    slug: "shipping-software-in-africa",
+    title: "How African teams can ship production software faster",
+    excerpt:
+      "Practical patterns for delivery when bandwidth, payments, and talent markets look different from Silicon Valley defaults.",
+    author: {
+      name: "RweruSynapse Team",
+      role: "Engineering",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rweru",
     },
-    {
-        slug: "building-robust-frameworks",
-        title: "Principles for Building Robust Frameworks",
-        excerpt: "TL;DR: A deep dive into API design, developer experience, and maintaining backward compatibility when building internal tools.",
-        author: {
-            name: "Sarah Chen",
-            role: "Lead Architect",
-            avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah",
-        },
-        date: "Nov 12, 2025",
-        category: "Frameworks",
-        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2000&auto=format&fit=crop",
+    date: "Jul 10, 2026",
+    category: "Engineering",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    slug: "connectivity-aware-design",
+    title: "Connectivity-aware product design",
+    excerpt:
+      "Designing interfaces and architectures that stay useful on intermittent networks across Rwanda and the region.",
+    author: {
+      name: "RweruSynapse Team",
+      role: "Product Research",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Design",
     },
-    {
-        slug: "mobile-app-tips",
-        title: "Essential Tips for High-Performance Mobile Apps",
-        excerpt: "TL;DR: focusing on offline-first architecture, effective state management, and optimizing assets for sub-second load times.",
-        author: {
-            name: "Jordan Lee",
-            role: "Mobile Developer",
-            avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan",
-        },
-        date: "Dec 05, 2025",
-        category: "App Building",
-        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2000&auto=format&fit=crop",
+    date: "Jun 18, 2026",
+    category: "Research",
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    slug: "multilingual-african-products",
+    title: "Building for multilingual African audiences",
+    excerpt:
+      "Language, tone, and UI structure when your users speak Kinyarwanda, French, English, Swahili — often in the same session.",
+    author: {
+      name: "RweruSynapse Team",
+      role: "Design",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Lang",
     },
-    {
-        slug: "nextjs-scaling",
-        title: "Scaling Next.js Applications for the Enterprise",
-        excerpt: "TL;DR: Strategies for caching, ISR, and optimizing Vercel deployments to handle millions of requests without breaking a sweat.",
-        author: {
-            name: "Mike Ross",
-            role: "Frontend Lead",
-            avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Mike",
-        },
-        date: "Jan 15, 2026",
-        category: "Technology",
-        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2000&auto=format&fit=crop",
+    date: "May 22, 2026",
+    category: "Design",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    slug: "opening-synapse-community",
+    title: "Opening the Synapse Community",
+    excerpt:
+      "Why we are building a place for Africans to learn software together — and how you can contribute from day one.",
+    author: {
+      name: "RweruSynapse Team",
+      role: "Community",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Community",
     },
-    {
-        slug: "database-design-patterns",
-        title: "Database Design Patterns for 2026",
-        excerpt: "TL;DR: moving beyond simple CRUD. Exploring event sourcing, polymorphy, and time-series data handling in modern Postgres.",
-        author: {
-            name: "Emily Davis",
-            role: "Data Scientist",
-            avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Emily",
-        },
-        date: "Jan 20, 2026",
-        category: "Data",
-        image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=2000&auto=format&fit=crop",
+    date: "May 05, 2026",
+    category: "Community",
+    image:
+      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2000&auto=format&fit=crop",
+  },
+  {
+    slug: "platforms-for-african-organizations",
+    title: "Platforms that grow with African organizations",
+    excerpt:
+      "Lessons from building multi-tenant systems for non-profits, churches, farms, and operators who need to scale carefully.",
+    author: {
+      name: "RweruSynapse Team",
+      role: "Platforms",
+      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Platform",
     },
+    date: "Apr 12, 2026",
+    category: "Solutions",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2000&auto=format&fit=crop",
+  },
 ];

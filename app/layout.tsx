@@ -1,23 +1,44 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Instrument_Sans, Source_Serif_4, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Rweru | Building Modern Applications with AI",
-  description: "Rweru specializes in creating high-performance applications using cutting-edge AI technology. We operate in Rwanda, North Cyprus, and globally online to transform your ideas into reality.",
-  keywords: ["Rweru", "Software Development", "AI Applications", "Web Development", "Mobile Apps", "Rwanda", "North Cyprus", "Online Services", "Digital Transformation", "Next.js", "React"],
+  title: {
+    default: "RweruSynapse | Software for Rwanda and Africa",
+    template: "%s | RweruSynapse",
+  },
+  description:
+    "RweruSynapse builds software solutions for Rwanda and Africa — products, research, blogs, and a community where Africans learn and contribute.",
+  keywords: [
+    "RweruSynapse",
+    "RWERUSYNAPSE",
+    "Software Development",
+    "Rwanda",
+    "Africa",
+    "Kigali",
+    "Tech Community",
+    "Research",
+    "Web Development",
+    "Digital Transformation",
+  ],
 };
 
 export default function RootLayout({
@@ -26,15 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-      </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${instrumentSans.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="min-h-screen font-sans antialiased">{children}</body>
     </html>
   );
 }

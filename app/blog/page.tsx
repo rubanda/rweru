@@ -1,58 +1,46 @@
-
 import { blogPosts } from "@/lib/blog-data";
-import { BlogCard } from "@/components/blog/blog-card";
+import Link from "next/link";
 
 export default function BlogIndexPage() {
-    const featuredPosts = blogPosts.slice(0, 2);
-    const otherPosts = blogPosts.slice(2);
-
-    return (
-        <div className="w-full">
-            {/* Page Title Section */}
-            <section className="pt-20 pb-12 md:pt-32 md:pb-20 px-6">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                        <div className="max-w-2xl">
-                            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-gray-900 dark:text-white mb-6">
-                                Blog
-                            </h1>
-                            <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium leading-relaxed">
-                                Start building with Rweru. Updates, tips, and insights from the team.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Content Section */}
-            <section className="px-6 pb-24">
-                <div className="max-w-[1200px] mx-auto">
-
-                    {/* Featured Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                        {featuredPosts.map((post) => (
-                            <div key={post.slug} className="h-full">
-                                <BlogCard post={post} featured={false} /> {/* Using standard card look but bigger via grid */}
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Divider with Label */}
-                    <div className="flex items-center gap-4 mb-10">
-                        <div className="h-px bg-gray-200 dark:bg-gray-800 flex-1"></div>
-                        <span className="text-sm font-bold uppercase tracking-widest text-gray-400">Latest Posts</span>
-                        <div className="h-px bg-gray-200 dark:bg-gray-800 flex-1"></div>
-                    </div>
-
-                    {/* Standard Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {otherPosts.map((post) => (
-                            <BlogCard key={post.slug} post={post} />
-                        ))}
-                    </div>
-
-                </div>
-            </section>
+  return (
+    <div className="w-full">
+      <section className="site-container section-y">
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <p className="text-meta mb-6">Blog</p>
+            <h1 className="text-display-xl font-sans font-bold text-slate">
+              Writing on software, research, and community.
+            </h1>
+          </div>
+          <div className="flex items-end lg:col-span-5">
+            <p className="max-w-[40ch] font-serif text-body-lg text-slate-medium">
+              Notes from RweruSynapse — how we build products in Rwanda, study African
+              digital systems, and grow a community of contributors.
+            </p>
+          </div>
         </div>
-    );
+      </section>
+
+      <section className="site-container pb-[clamp(4rem,8vw,10rem)]">
+        <div className="hidden grid-cols-12 gap-4 border-b border-slate/10 pb-3 md:grid">
+          <span className="text-meta col-span-2">Date</span>
+          <span className="text-meta col-span-2">Category</span>
+          <span className="text-meta col-span-8">Title</span>
+        </div>
+        {blogPosts.map((post) => (
+          <Link
+            key={post.slug}
+            href={`/blog/${post.slug}`}
+            className="grid grid-cols-1 gap-2 border-b border-slate/10 py-6 transition-colors hover:text-clay md:grid-cols-12 md:items-baseline md:gap-4"
+          >
+            <span className="text-meta md:col-span-2">{post.date}</span>
+            <span className="text-meta md:col-span-2">{post.category}</span>
+            <span className="font-sans text-lg font-medium md:col-span-8 md:text-xl">
+              {post.title}
+            </span>
+          </Link>
+        ))}
+      </section>
+    </div>
+  );
 }
