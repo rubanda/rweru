@@ -1,19 +1,16 @@
-
-import { BlogHeader } from "@/components/blog/blog-header";
-import { BlogFooter } from "@/components/blog/blog-footer";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 export default function BlogLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <div className="min-h-screen flex flex-col bg-white dark:bg-background-dark font-sans selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900/30 dark:selection:text-blue-100">
-            <BlogHeader />
-            <main className="flex-1">
-                {children}
-            </main>
-            <BlogFooter />
-        </div>
-    );
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
+  );
 }

@@ -1,0 +1,95 @@
+export type UseCase = {
+  slug: string;
+  title: string;
+  description: string;
+  href: string;
+  author: string;
+  category: string;
+  product: string;
+  features: string[];
+  location: string;
+  poweredBy?: string;
+};
+
+export const useCases: UseCase[] = [
+  {
+    slug: "masata",
+    title: "Masata — church and ministry operations platform",
+    description:
+      "A multi-tenant application that helps churches manage members, content, events, and connected websites from one place. Powers New Jerusalem Church sites across Rwanda and Luxembourg.",
+    href: "https://masata.app",
+    author: "RweruSynapse",
+    category: "Platform",
+    product: "Masata",
+    features: ["SaaS", "Multi-tenant", "Operations"],
+    location: "Africa & Europe",
+  },
+  {
+    slug: "njc-rwanda",
+    title: "New Jerusalem Church Rwanda",
+    description:
+      "The official website for New Jerusalem Church in Rwanda — sermons, events, and community presence, powered by Masata.",
+    href: "https://njc.org.rw",
+    author: "RweruSynapse",
+    category: "Church",
+    product: "Website",
+    features: ["Content", "Events", "Masata"],
+    location: "Kigali, Rwanda",
+    poweredBy: "Masata",
+  },
+  {
+    slug: "eza-hotel",
+    title: "Eza Hotel — book stays in Rwanda",
+    description:
+      "A hospitality website for Eza Hotel where guests can discover rooms, amenities, and book their stay online.",
+    href: "https://www.eza.rw",
+    author: "RweruSynapse",
+    category: "Hospitality",
+    product: "Website",
+    features: ["Booking", "Hotel", "Rwanda"],
+    location: "Rwanda",
+  },
+  {
+    slug: "jfountain-mission",
+    title: "jFountain Mission",
+    description:
+      "Website for a non-profit organization and church in Uganda — outreach, community engagement, and ministry presence online.",
+    href: "https://www.jfountainmission.org",
+    author: "RweruSynapse",
+    category: "Non-profit",
+    product: "Website",
+    features: ["Church", "Outreach", "Uganda"],
+    location: "Uganda",
+  },
+  {
+    slug: "njc-luxembourg",
+    title: "New Jerusalem Church Luxembourg",
+    description:
+      "Branch website for New Jerusalem Church in Luxembourg, connected to the Masata platform for content and events.",
+    href: "https://www.newjerusalem.lu",
+    author: "RweruSynapse",
+    category: "Church",
+    product: "Website",
+    features: ["Content", "Events", "Masata"],
+    location: "Luxembourg",
+    poweredBy: "Masata",
+  },
+  {
+    slug: "rubanda-jacques",
+    title: "Rubanda Jacques",
+    description:
+      "Personal site for the senior pastor of New Jerusalem Church — teaching, biography, and ministry presence.",
+    href: "https://www.rubandajacques.org",
+    author: "RweruSynapse",
+    category: "Ministry",
+    product: "Website",
+    features: ["Portfolio", "Biography"],
+    location: "Rwanda",
+  },
+];
+
+export const filterOptions = {
+  category: Array.from(new Set(useCases.map((item) => item.category))).sort(),
+  features: Array.from(new Set(useCases.flatMap((item) => item.features))).sort(),
+  product: Array.from(new Set(useCases.map((item) => item.product))).sort(),
+};
