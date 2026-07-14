@@ -23,9 +23,10 @@ const columns = [
     title: "Learn",
     links: [
       { href: "/community", label: "Community" },
+      { href: "/community#events", label: "Events" },
       { href: "/community#learn", label: "Learning paths" },
+      { href: "/community#join", label: "Join" },
       { href: "/blog", label: "Blog" },
-      { href: "/community#contribute", label: "Contribute" },
     ],
   },
   {
