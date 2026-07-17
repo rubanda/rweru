@@ -47,6 +47,13 @@ export function UseCaseCard({ item }: { item: UseCase }) {
             {item.description}
           </p>
 
+          {item.outcome ? (
+            <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-clay">
+              <span className="font-medium">Result: </span>
+              {item.outcome}
+            </p>
+          ) : null}
+
           <dl className="mt-4 flex flex-col gap-1.5 border-t border-slate/10 pt-4">
             <div className="flex justify-between gap-4">
               <dt className="text-meta">Author</dt>

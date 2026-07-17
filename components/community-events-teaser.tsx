@@ -19,10 +19,15 @@ export function CommunityEventsTeaser() {
             Workshops, ship nights, and learning paths for youth across Rwanda and Africa.
           </p>
         </div>
-        <Link href="/community#events" className="btn-secondary shrink-0">
-          Browse all events
-          <span aria-hidden>→</span>
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/community#events" className="btn-secondary shrink-0">
+            Browse all events
+            <span aria-hidden>→</span>
+          </Link>
+          <Link href="/community#volunteer" className="btn-secondary shrink-0">
+            Become a volunteer
+          </Link>
+        </div>
       </div>
 
       <div className="mt-12">

@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Solutions",
   description:
     "Custom software, platforms, and digital products from RweruSynapse for organizations across Rwanda and Africa.",
+  alternates: { canonical: "/solutions" },
+  openGraph: {
+    title: "Solutions | RweruSynapse",
+    description:
+      "Custom software, platforms, and digital products from RweruSynapse for organizations across Rwanda and Africa.",
+    url: "/solutions",
+  },
 };
 
 const offerings = [

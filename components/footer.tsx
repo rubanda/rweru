@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
+import { NewsletterForm } from "@/components/newsletter-form";
 
 const columns = [
   {
@@ -44,7 +45,22 @@ export function Footer() {
   return (
     <footer className="bg-slate text-ivory">
       <div className="site-container section-y">
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="flex flex-col gap-6 border-b border-ivory/10 pb-12 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h3 className="font-sans text-lg font-semibold text-ivory">
+              Get build logs & event invites
+            </h3>
+            <p className="mt-1 max-w-[38ch] text-sm text-ivory/60">
+              One email, roughly weekly — what we shipped, what we&apos;re researching, and
+              what&apos;s next in the community.
+            </p>
+          </div>
+          <div className="w-full max-w-sm">
+            <NewsletterForm source="footer" tone="dark" />
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Logo tone="dark" />
             <p className="mt-4 max-w-[22ch] font-serif text-base leading-relaxed text-ivory/70">

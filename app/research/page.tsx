@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Research",
   description:
     "Research from RweruSynapse on software systems, digital infrastructure, and technology for African contexts.",
+  alternates: { canonical: "/research" },
+  openGraph: {
+    title: "Research | RweruSynapse",
+    description:
+      "Research from RweruSynapse on software systems, digital infrastructure, and technology for African contexts.",
+    url: "/research",
+  },
 };
 
 const focusAreas = [
