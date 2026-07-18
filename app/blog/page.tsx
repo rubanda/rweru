@@ -1,5 +1,23 @@
+import type { Metadata } from "next";
 import { blogPosts } from "@/lib/blog-data";
-import Link from "next/link";
+import { BlogPostCard } from "@/components/blog-post-card";
+
+const title = "Blog";
+const description =
+  "Notes from RweruSynapse — how we build products in Rwanda, study African digital systems, and grow a community of contributors.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title,
+    description,
+    url: "/blog",
+  },
+};
 
 export default function BlogIndexPage() {
   return (
@@ -22,24 +40,11 @@ export default function BlogIndexPage() {
       </section>
 
       <section className="site-container pb-[clamp(4rem,8vw,10rem)]">
-        <div className="hidden grid-cols-12 gap-4 border-b border-slate/10 pb-3 md:grid">
-          <span className="text-meta col-span-2">Date</span>
-          <span className="text-meta col-span-2">Category</span>
-          <span className="text-meta col-span-8">Title</span>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {blogPosts.map((post, index) => (
+            <BlogPostCard key={post.slug} post={post} priority={index === 0} />
+          ))}
         </div>
-        {blogPosts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/blog/${post.slug}`}
-            className="grid grid-cols-1 gap-2 border-b border-slate/10 py-6 transition-colors hover:text-clay md:grid-cols-12 md:items-baseline md:gap-4"
-          >
-            <span className="text-meta md:col-span-2">{post.date}</span>
-            <span className="text-meta md:col-span-2">{post.category}</span>
-            <span className="font-sans text-lg font-medium md:col-span-8 md:text-xl">
-              {post.title}
-            </span>
-          </Link>
-        ))}
       </section>
     </div>
   );

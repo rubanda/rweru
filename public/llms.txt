@@ -1,0 +1,18 @@
+# RweruSynapse
+
+RweruSynapse is a software company based in Kigali, Rwanda, building software solutions, research, and a community for Rwanda and Africa. We design products for real African conditions — intermittent connectivity, multilingual users, mobile-first access — and publish research and writing on engineering, product design, and digital systems across the continent.
+
+## Key pages
+
+- Home: https://rweru.com/ — Overview of RweruSynapse and what we build.
+- Solutions: https://rweru.com/solutions — Software solutions we build for organizations across Rwanda and Africa.
+- Research: https://rweru.com/research — Research and writing on African digital systems and product design.
+- Use Cases: https://rweru.com/use-cases — Examples of products and platforms delivered for real organizations.
+- Community: https://rweru.com/community — A community where Africans learn and contribute to software together.
+- Company: https://rweru.com/company — About RweruSynapse, our team, and our mission.
+- Blog: https://rweru.com/blog — Notes on engineering, research, and community from RweruSynapse.
+- Contact: https://rweru.com/contact — Get in touch with RweruSynapse.
+
+## Contact
+
+hello@rweru.com

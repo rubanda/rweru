@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   communityEvents,
@@ -11,6 +11,8 @@ import {
 import { useEventsStore } from "@/lib/events-store";
 import { cn } from "@/lib/utils";
 import { blogPosts } from "@/lib/blog-data";
+import { RsvpForm } from "@/components/rsvp-form";
+import { buildIcsDataUrl } from "@/lib/ics";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -82,6 +84,8 @@ function FilterBlock({
 }
 
 function FeaturedCard({ event }: { event: CommunityEvent }) {
+  const [rsvpOpen, setRsvpOpen] = useState(false);
+
   return (
     <article className="overflow-hidden rounded-2xl bg-oat">
       <div className="grid gap-8 p-8 md:grid-cols-[1.2fr_0.8fr] md:p-10">
@@ -100,10 +104,36 @@ function FeaturedCard({ event }: { event: CommunityEvent }) {
             <span aria-hidden>·</span>
             <span>{event.type}</span>
           </div>
-          <Link href={event.href} className="btn-secondary mt-8 inline-flex">
-            Learn more
-            <span aria-hidden>→</span>
-          </Link>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href={event.href} className="btn-secondary inline-flex">
+              Learn more
+              <span aria-hidden>→</span>
+            </Link>
+            {event.status === "Upcoming" ? (
+              <>
+                <button
+                  type="button"
+                  onClick={() => setRsvpOpen((open) => !open)}
+                  className="btn-secondary"
+                  aria-expanded={rsvpOpen}
+                >
+                  {rsvpOpen ? "Close RSVP" : "RSVP"}
+                </button>
+                <a
+                  href={buildIcsDataUrl(event)}
+                  download={`${event.slug}.ics`}
+                  className="inline-flex items-center gap-1.5 self-center text-sm font-medium text-slate-medium underline underline-offset-2 hover:text-clay"
+                >
+                  Add to calendar
+                </a>
+              </>
+            ) : null}
+          </div>
+          {rsvpOpen ? (
+            <div className="mt-6 max-w-[32rem] rounded-xl border border-slate/10 bg-ivory p-5">
+              <RsvpForm eventSlug={event.slug} eventTitle={event.title} />
+            </div>
+          ) : null}
         </div>
         <div
           aria-hidden
@@ -132,41 +162,93 @@ function FeaturedCard({ event }: { event: CommunityEvent }) {
 }
 
 function EventListRow({ event }: { event: CommunityEvent }) {
+  const [rsvpOpen, setRsvpOpen] = useState(false);
+  const isUpcoming = event.status === "Upcoming";
+
   return (
-    <Link
-      href={event.href}
-      className="group grid gap-2 border-b border-slate/10 py-5 transition-colors sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-baseline sm:gap-6"
-    >
-      <span className="font-sans text-lg font-medium text-slate group-hover:text-clay">
-        {event.title}
-        <span className="text-slate-light"> · </span>
-        <span className="font-normal text-slate-medium">{event.type}</span>
-      </span>
-      <span className="hidden text-sm text-slate-medium sm:block">{event.location}</span>
-      <span className="text-sm text-slate-medium sm:text-right">{event.date}</span>
-    </Link>
+    <div className="border-b border-slate/10 py-5">
+      <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_auto_auto_auto] sm:items-baseline sm:gap-4">
+        <Link href={event.href} className="group font-sans text-lg font-medium text-slate">
+          <span className="group-hover:text-clay">{event.title}</span>
+          <span className="text-slate-light"> · </span>
+          <span className="font-normal text-slate-medium">{event.type}</span>
+        </Link>
+        <span className="hidden text-sm text-slate-medium sm:block">{event.location}</span>
+        <span className="text-sm text-slate-medium sm:text-right">{event.date}</span>
+        {isUpcoming ? (
+          <a
+            href={buildIcsDataUrl(event)}
+            download={`${event.slug}.ics`}
+            className="text-xs font-medium text-slate-medium underline underline-offset-2 hover:text-clay sm:justify-self-end"
+          >
+            Add to calendar
+          </a>
+        ) : null}
+        {isUpcoming ? (
+          <button
+            type="button"
+            onClick={() => setRsvpOpen((open) => !open)}
+            className="btn-secondary h-9 px-4 py-0 text-xs sm:justify-self-end"
+            aria-expanded={rsvpOpen}
+          >
+            {rsvpOpen ? "Close" : "RSVP"}
+          </button>
+        ) : null}
+      </div>
+      {rsvpOpen ? (
+        <div className="mt-4 max-w-[32rem] rounded-xl border border-slate/10 bg-ivory p-5">
+          <RsvpForm eventSlug={event.slug} eventTitle={event.title} />
+        </div>
+      ) : null}
+    </div>
   );
 }
 
 function EventGridCard({ event }: { event: CommunityEvent }) {
+  const [rsvpOpen, setRsvpOpen] = useState(false);
+  const isUpcoming = event.status === "Upcoming";
+
   return (
-    <Link
-      href={event.href}
-      className="group flex h-full flex-col rounded-2xl bg-oat p-7 transition-transform duration-300 hover:-translate-y-0.5"
-    >
-      <p className="text-meta">{event.date}</p>
-      <h3 className="mt-4 font-sans text-xl font-semibold leading-snug text-slate group-hover:text-clay">
-        {event.title}
-      </h3>
-      <p className="mt-3 flex-1 font-serif text-base leading-relaxed text-slate-medium">
-        {event.description}
-      </p>
-      <div className="mt-6 flex flex-wrap gap-2 text-meta text-slate-light">
-        <span>{event.format}</span>
-        <span>·</span>
-        <span>{event.type}</span>
-      </div>
-    </Link>
+    <div className="flex h-full flex-col rounded-2xl bg-oat p-7 transition-transform duration-300 hover:-translate-y-0.5">
+      <Link href={event.href} className="group flex flex-1 flex-col">
+        <p className="text-meta">{event.date}</p>
+        <h3 className="mt-4 font-sans text-xl font-semibold leading-snug text-slate group-hover:text-clay">
+          {event.title}
+        </h3>
+        <p className="mt-3 flex-1 font-serif text-base leading-relaxed text-slate-medium">
+          {event.description}
+        </p>
+        <div className="mt-6 flex flex-wrap gap-2 text-meta text-slate-light">
+          <span>{event.format}</span>
+          <span>·</span>
+          <span>{event.type}</span>
+        </div>
+      </Link>
+      {isUpcoming ? (
+        <div className="mt-6 flex flex-wrap items-center gap-4">
+          <button
+            type="button"
+            onClick={() => setRsvpOpen((open) => !open)}
+            className="btn-secondary self-start"
+            aria-expanded={rsvpOpen}
+          >
+            {rsvpOpen ? "Close RSVP" : "RSVP"}
+          </button>
+          <a
+            href={buildIcsDataUrl(event)}
+            download={`${event.slug}.ics`}
+            className="text-sm font-medium text-slate-medium underline underline-offset-2 hover:text-clay"
+          >
+            Add to calendar
+          </a>
+        </div>
+      ) : null}
+      {rsvpOpen ? (
+        <div className="mt-6 rounded-xl border border-slate/10 bg-ivory p-5">
+          <RsvpForm eventSlug={event.slug} eventTitle={event.title} />
+        </div>
+      ) : null}
+    </div>
   );
 }
 

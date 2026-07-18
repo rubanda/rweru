@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Company",
   description:
     "About RweruSynapse — a software company in Rwanda building solutions, research, and community for Africa.",
+  alternates: { canonical: "/company" },
+  openGraph: {
+    title: "Company | RweruSynapse",
+    description:
+      "About RweruSynapse — a software company in Rwanda building solutions, research, and community for Africa.",
+    url: "/company",
+  },
 };
 
 const values = [

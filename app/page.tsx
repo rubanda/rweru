@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
+import { ProofStrip } from "@/components/proof-strip";
 import { MissionBand } from "@/components/mission-band";
 import { UseCasesShowcase } from "@/components/use-cases-showcase";
 import { CommunityEventsTeaser } from "@/components/community-events-teaser";
@@ -13,6 +14,7 @@ export default function Page() {
       <Header />
       <main>
         <Hero />
+        <ProofStrip />
         <MissionBand />
         <CommunityEventsTeaser />
         <UseCasesShowcase />

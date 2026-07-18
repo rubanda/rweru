@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/blog-data";
+import { BlogPostingJsonLd } from "@/components/structured-data";
+import { AuthorBio } from "@/components/author-bio";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -15,6 +17,16 @@ export async function generateMetadata({ params }: Props) {
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      url: `/blog/${slug}`,
+      publishedTime: post.date,
+    },
   };
 }
 
@@ -32,6 +44,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article>
+      <BlogPostingJsonLd post={post} />
       <header className="site-container section-y">
         <div className="mx-auto max-w-3xl">
           <div className="mb-8 flex flex-wrap items-center gap-3">
@@ -53,32 +66,18 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="site-container pb-[clamp(4rem,8vw,10rem)]">
         <div className="mx-auto max-w-2xl font-serif text-lg leading-relaxed text-slate-medium">
-          <p className="mb-6">
-            At RweruSynapse we believe African software should be designed for African
-            conditions — intermittent connectivity, multilingual users, mobile-first
-            access, and institutions that grow carefully rather than overnight.
-          </p>
-          <h2 className="mb-4 mt-12 font-sans text-2xl font-semibold text-slate">
-            Why this matters
-          </h2>
-          <p className="mb-6">
-            Too many products are copied from contexts that assume always-on broadband,
-            card payments, and English-only interfaces. The result is friction for the
-            people who need digital tools the most.
-          </p>
-          <p className="mb-6">
-            This piece is part of our ongoing writing on engineering, research, and
-            community. We publish to share what we learn building from Kigali — and to
-            invite contributors across Africa to improve the work.
-          </p>
-          <h2 className="mb-4 mt-12 font-sans text-2xl font-semibold text-slate">
-            What we&apos;re exploring
-          </h2>
-          <ul className="mb-6 list-disc space-y-2 pl-6">
-            <li>Delivery habits that survive real infrastructure constraints</li>
-            <li>Research that informs product decisions for local markets</li>
-            <li>Community models where Africans learn and contribute together</li>
-          </ul>
+          {post.sections.map((section) => (
+            <div key={section.heading}>
+              <h2 className="mb-4 mt-12 font-sans text-2xl font-semibold text-slate">
+                {section.heading}
+              </h2>
+              {section.paragraphs.map((paragraph, index) => (
+                <p key={index} className="mb-6">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          ))}
           <p>
             If this resonates, join the conversation through our{" "}
             <Link href="/community" className="link-underline text-slate">
@@ -92,7 +91,11 @@ export default async function BlogPostPage({ params }: Props) {
           </p>
         </div>
 
-        <div className="mx-auto mt-16 max-w-2xl border-t border-slate/10 pt-8">
+        <div className="mx-auto mt-12 max-w-2xl">
+          <AuthorBio author={post.author} />
+        </div>
+
+        <div className="mx-auto mt-10 max-w-2xl border-t border-slate/10 pt-8">
           <Link
             href="/blog"
             className="inline-flex items-center gap-2 text-sm font-medium text-slate hover:text-clay"

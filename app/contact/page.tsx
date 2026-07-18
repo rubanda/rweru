@@ -5,6 +5,12 @@ import { Footer } from "@/components/footer";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with RweruSynapse — software solutions from Kigali, Rwanda.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | RweruSynapse",
+    description: "Get in touch with RweruSynapse — software solutions from Kigali, Rwanda.",
+    url: "/contact",
+  },
 };
 
 export default function ContactPage() {
