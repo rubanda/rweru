@@ -1,25 +1,32 @@
 # RweruSynapse
 
-RweruSynapse is a Rwanda-based technology company building practical software, advancing applied AI, and growing Africa's next generation of builders. RWERU is our short public brand; RweruSynapse is our official company name.
+> RweruSynapse (RWERU) is a Rwanda-based technology company building practical software, advancing applied AI, and growing Africa's next generation of builders.
 
-Brand structure:
-- RWERU Studio — client services: custom software and digital platforms.
-- RWERU Products — software we own and operate ourselves, starting with Masata.
-- RWERU Labs — applied research and AI experiments.
-- RWERU Community — learning, events, and community programs for African developers, founders, students, and creators.
+RWERU is the short public brand; RweruSynapse is the official company name. Brand structure:
 
-## Key pages
+- RWERU Studio — client services: custom software and digital platforms
+- RWERU Products — software we own and operate, starting with Masata
+- RWERU Labs — applied research and AI experiments
+- RWERU Community — learning, events, and community programs for African builders
 
-- Home: https://rweru.com/ — Overview of RweruSynapse and what we build.
-- Products: https://rweru.com/products — RWERU Products, starting with Masata.
-- Solutions: https://rweru.com/solutions — RWERU Studio: custom software for organizations across Rwanda and Africa.
-- Research: https://rweru.com/research — RWERU Labs: applied research and AI experiments.
-- Work: https://rweru.com/use-cases — Client work delivered by RWERU Studio.
-- Community: https://rweru.com/community — RWERU Community, where Africans learn and contribute to software together.
-- Company: https://rweru.com/company — About RweruSynapse, our team, and our mission.
-- Blog: https://rweru.com/blog — Notes on engineering, research, and community from RweruSynapse.
-- Contact: https://rweru.com/contact — Get in touch with RweruSynapse.
+## Pages
 
-## Contact
+- [Home](https://rweru.com/): Overview of RweruSynapse and what we build
+- [Products](https://rweru.com/products): RWERU Products, starting with Masata
+- [Solutions](https://rweru.com/solutions): RWERU Studio — custom software for organizations across Rwanda and Africa
+- [Research](https://rweru.com/research): RWERU Labs — applied research and AI experiments
+- [Work](https://rweru.com/use-cases): Client work delivered by RWERU Studio
+- [Community](https://rweru.com/community): RWERU Community, where Africans learn and contribute to software together
+- [Company](https://rweru.com/company): About RweruSynapse, our team, and our mission
+- [Blog](https://rweru.com/blog): Notes on engineering, research, and community from RweruSynapse
+- [Contact](https://rweru.com/contact): Get in touch with RweruSynapse
 
-hello@rweru.com
+## Products
+
+- [Masata](https://masata.app): Masata by RWERU — a product of RweruSynapse
+
+## Optional
+
+- [X](https://x.com/rwerusynapse): @rwerusynapse on X
+- [LinkedIn](https://www.linkedin.com/company/rwerusynapse): RweruSynapse on LinkedIn
+- [GitHub](https://github.com/rwerusynapse): RweruSynapse on GitHub

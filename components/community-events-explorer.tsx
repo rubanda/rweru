@@ -107,7 +107,7 @@ function FeaturedCard({ event }: { event: CommunityEvent }) {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={event.href} className="btn-secondary inline-flex">
-              Learn more
+              View event details
               <span aria-hidden>→</span>
             </Link>
             {event.status === "Upcoming" ? (
@@ -509,7 +509,7 @@ export function CommunityEventsExplorer() {
               <h3 className="mt-3 font-sans text-lg font-semibold leading-snug text-slate group-hover:text-clay">
                 {post.title}
               </h3>
-              <span className="mt-4 inline-flex text-sm font-medium">Learn more →</span>
+              <span className="mt-4 inline-flex text-sm font-medium">Read article →</span>
             </Link>
           ))}
         </div>
