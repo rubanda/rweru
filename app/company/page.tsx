@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { brand } from "@/lib/brand";
+import { BrandFaqJsonLd, BreadcrumbJsonLd } from "@/components/structured-data";
+import { brand, brandFaq } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "About RweruSynapse — a Rwanda-based technology company building software, AI products, and community for Africa.",
+    "About RweruSynapse (RWERU) — a Rwanda-based technology company building software, AI products, and community for Africa.",
   alternates: { canonical: "/company" },
   openGraph: {
     title: "Company | RweruSynapse",
     description:
-      "About RweruSynapse — a Rwanda-based technology company building software, AI products, and community for Africa.",
+      "About RweruSynapse (RWERU) — a Rwanda-based technology company building software, AI products, and community for Africa.",
     url: "/company",
   },
 };
@@ -39,6 +40,8 @@ export default function CompanyPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Company", href: "/company" }]} />
+      <BrandFaqJsonLd />
       <main>
         <section className="site-container section-y">
           <div className="grid gap-10 lg:grid-cols-12">
@@ -86,6 +89,26 @@ export default function CompanyPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="border-t border-slate/10 bg-ivory">
+          <div className="site-container section-y">
+            <h2 className="text-display-s font-sans font-semibold">
+              About the RWERU name
+            </h2>
+            <div className="mt-10 flex flex-col gap-0">
+              {brandFaq.map((item) => (
+                <div key={item.question} className="border-t border-slate/10 py-8">
+                  <h3 className="font-sans text-lg font-semibold text-slate">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 max-w-[60ch] font-serif text-base leading-relaxed text-slate-medium">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

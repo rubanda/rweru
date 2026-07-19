@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { products, upcomingProducts } from "@/lib/products";
 import { masata } from "@/lib/brand";
+import { BreadcrumbJsonLd, ProductJsonLd } from "@/components/structured-data";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -22,6 +23,17 @@ export default function ProductsPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Products", href: "/products" }]} />
+      {products.map((product) => (
+        <ProductJsonLd
+          key={product.slug}
+          product={{
+            name: product.name,
+            description: product.description,
+            href: product.href,
+          }}
+        />
+      ))}
       <main>
         <section className="site-container section-y">
           <div className="grid gap-10 lg:grid-cols-12">

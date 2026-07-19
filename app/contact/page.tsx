@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { brand } from "@/lib/brand";
+import { BreadcrumbJsonLd } from "@/components/structured-data";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -18,6 +19,7 @@ export default function ContactPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Contact", href: "/contact" }]} />
       <main>
         <section className="site-container section-y">
           <div className="grid gap-16 lg:grid-cols-12">

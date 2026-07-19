@@ -3,7 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CommunityEventsExplorer } from "@/components/community-events-explorer";
 import { RsvpForm } from "@/components/rsvp-form";
-import { EventJsonLd } from "@/components/structured-data";
+import { BreadcrumbJsonLd, EventJsonLd } from "@/components/structured-data";
 import { communityEvents } from "@/lib/events";
 import { brand } from "@/lib/brand";
 
@@ -49,6 +49,7 @@ export default function CommunityPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Community", href: "/community" }]} />
       {upcomingEvents.map((event) => (
         <EventJsonLd key={event.slug} event={event} />
       ))}

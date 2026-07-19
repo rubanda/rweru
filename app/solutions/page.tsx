@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { studioOfferings } from "@/lib/solutions";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/structured-data";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -21,6 +22,8 @@ export default function SolutionsPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Solutions", href: "/solutions" }]} />
+      <ServiceJsonLd />
       <main>
         <section className="site-container section-y">
           <div className="grid gap-10 lg:grid-cols-12">

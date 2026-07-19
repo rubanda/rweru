@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Instrument_Sans, Source_Serif_4, JetBrains_Mono } from "next/font/google";
-import { OrganizationJsonLd } from "@/components/structured-data";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/structured-data";
 import { brand, siteUrl } from "@/lib/brand";
 import "./globals.css";
 
@@ -65,6 +65,12 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   manifest: "/manifest.webmanifest",
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
@@ -81,6 +87,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen font-sans antialiased">
         <OrganizationJsonLd />
+        <WebSiteJsonLd />
         {children}
         {plausibleDomain ? (
           <Script

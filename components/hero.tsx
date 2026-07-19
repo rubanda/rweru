@@ -1,9 +1,12 @@
 import Link from "next/link";
+import { brand } from "@/lib/brand";
 
 export function Hero() {
   return (
     <section className="site-container section-y">
-      <p className="fade-up text-meta mb-6">Technology company based in Rwanda</p>
+      <p className="fade-up text-meta mb-6">
+        {brand.short} — Technology company based in Rwanda
+      </p>
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="fade-up lg:col-span-7">
           <h1 className="text-display-xl font-sans font-bold text-slate">

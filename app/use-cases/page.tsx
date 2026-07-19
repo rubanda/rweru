@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { UseCasesExplorer } from "@/components/use-cases-explorer";
+import { BreadcrumbJsonLd } from "@/components/structured-data";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -20,6 +21,7 @@ export default function UseCasesPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Work", href: "/use-cases" }]} />
       <main>
         <UseCasesExplorer />
       </main>

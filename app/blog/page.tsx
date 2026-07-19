@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { blogPosts } from "@/lib/blog-data";
 import { BlogPostCard } from "@/components/blog-post-card";
+import { BreadcrumbJsonLd } from "@/components/structured-data";
 
 const title = "Blog";
 const description =
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   return (
     <div className="w-full">
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog" }]} />
       <section className="site-container section-y">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">

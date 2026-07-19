@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { labsFocusAreas } from "@/lib/research";
+import { BreadcrumbJsonLd } from "@/components/structured-data";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -42,6 +43,7 @@ export default function ResearchPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Research", href: "/research" }]} />
       <main>
         <section className="site-container section-y">
           <div className="grid gap-10 lg:grid-cols-12">
