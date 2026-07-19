@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { Logo } from "@/components/logo";
 
 const navLinks = [
-  { href: "/research", label: "Research" },
+  { href: "/products", label: "Products" },
   { href: "/solutions", label: "Solutions" },
-  { href: "/use-cases", label: "Use cases" },
+  { href: "/research", label: "Research" },
   { href: "/community", label: "Community" },
+  { href: "/use-cases", label: "Work" },
   { href: "/company", label: "Company" },
   { href: "/blog", label: "Blog" },
 ];
@@ -43,12 +44,12 @@ export function Header() {
         <nav className="site-container flex h-[4.25rem] items-center justify-between gap-6">
           <Logo onClick={() => setIsMenuOpen(false)} />
 
-          <div className="hidden items-center gap-8 lg:flex">
+          <div className="hidden items-center gap-5 xl:gap-7 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-slate/80 transition-colors duration-200 hover:text-slate"
+                className="whitespace-nowrap text-sm font-medium text-slate/80 transition-colors duration-200 hover:text-slate"
               >
                 {link.label}
               </Link>

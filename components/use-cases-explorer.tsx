@@ -149,6 +149,7 @@ export function UseCasesExplorer() {
     <>
       <section className="site-container pt-[clamp(3rem,6vw,5rem)] pb-10">
         <div className="max-w-3xl">
+          <p className="text-meta mb-4">Client work, by RWERU Studio</p>
           <h1 className="text-display-xl font-serif font-normal text-slate">
             Get inspired by what we build
           </h1>
@@ -316,8 +317,8 @@ export function UseCasesExplorer() {
                 Transform how your organization operates
               </h2>
               <p className="mt-4 max-w-[36ch] font-serif text-lg text-ivory/70">
-                From church platforms to hospitality booking — we design and ship software
-                that fits African contexts.
+                From church platforms to hospitality booking — RWERU Studio designs
+                and ships software that fits African contexts.
               </p>
             </div>
             <Link href="/contact" className="btn-on-dark shrink-0">

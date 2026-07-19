@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/blog-data";
-import { BlogPostingJsonLd } from "@/components/structured-data";
+import { BlogPostingJsonLd, BreadcrumbJsonLd } from "@/components/structured-data";
 import { AuthorBio } from "@/components/author-bio";
 
 type Props = {
@@ -45,6 +45,13 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article>
       <BlogPostingJsonLd post={post} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", href: "/" },
+          { name: "Blog", href: "/blog" },
+          { name: post.title, href: `/blog/${slug}` },
+        ]}
+      />
       <header className="site-container section-y">
         <div className="mx-auto max-w-3xl">
           <div className="mb-8 flex flex-wrap items-center gap-3">

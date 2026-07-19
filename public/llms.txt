@@ -1,14 +1,21 @@
 # RweruSynapse
 
-RweruSynapse is a software company based in Kigali, Rwanda, building software solutions, research, and a community for Rwanda and Africa. We design products for real African conditions — intermittent connectivity, multilingual users, mobile-first access — and publish research and writing on engineering, product design, and digital systems across the continent.
+RweruSynapse is a Rwanda-based technology company building practical software, advancing applied AI, and growing Africa's next generation of builders. RWERU is our short public brand; RweruSynapse is our official company name.
+
+Brand structure:
+- RWERU Studio — client services: custom software and digital platforms.
+- RWERU Products — software we own and operate ourselves, starting with Masata.
+- RWERU Labs — applied research and AI experiments.
+- RWERU Community — learning, events, and community programs for African developers, founders, students, and creators.
 
 ## Key pages
 
 - Home: https://rweru.com/ — Overview of RweruSynapse and what we build.
-- Solutions: https://rweru.com/solutions — Software solutions we build for organizations across Rwanda and Africa.
-- Research: https://rweru.com/research — Research and writing on African digital systems and product design.
-- Use Cases: https://rweru.com/use-cases — Examples of products and platforms delivered for real organizations.
-- Community: https://rweru.com/community — A community where Africans learn and contribute to software together.
+- Products: https://rweru.com/products — RWERU Products, starting with Masata.
+- Solutions: https://rweru.com/solutions — RWERU Studio: custom software for organizations across Rwanda and Africa.
+- Research: https://rweru.com/research — RWERU Labs: applied research and AI experiments.
+- Work: https://rweru.com/use-cases — Client work delivered by RWERU Studio.
+- Community: https://rweru.com/community — RWERU Community, where Africans learn and contribute to software together.
 - Company: https://rweru.com/company — About RweruSynapse, our team, and our mission.
 - Blog: https://rweru.com/blog — Notes on engineering, research, and community from RweruSynapse.
 - Contact: https://rweru.com/contact — Get in touch with RweruSynapse.

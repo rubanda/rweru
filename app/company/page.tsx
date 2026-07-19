@@ -2,16 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { BrandFaqJsonLd, BreadcrumbJsonLd } from "@/components/structured-data";
+import { brand, brandFaq } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "About RweruSynapse — a software company in Rwanda building solutions, research, and community for Africa.",
+    "About RweruSynapse (RWERU) — a Rwanda-based technology company building software, AI products, and community for Africa.",
   alternates: { canonical: "/company" },
   openGraph: {
     title: "Company | RweruSynapse",
     description:
-      "About RweruSynapse — a software company in Rwanda building solutions, research, and community for Africa.",
+      "About RweruSynapse (RWERU) — a Rwanda-based technology company building software, AI products, and community for Africa.",
     url: "/company",
   },
 };
@@ -38,20 +40,22 @@ export default function CompanyPage() {
   return (
     <>
       <Header />
+      <BreadcrumbJsonLd items={[{ name: "Home", href: "/" }, { name: "Company", href: "/company" }]} />
+      <BrandFaqJsonLd />
       <main>
         <section className="site-container section-y">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <p className="text-meta mb-6">Company</p>
               <h1 className="text-display-xl font-sans font-bold text-slate">
-                RweruSynapse is building Africa&apos;s software capacity from Rwanda.
+                RweruSynapse is building Africa&apos;s technology capacity from Rwanda.
               </h1>
             </div>
             <div className="flex items-end lg:col-span-5">
               <p className="max-w-[40ch] font-serif text-body-lg text-slate-medium">
-                We are a software company headquartered in Kigali. Our work spans product
-                engineering, research, and a community that helps Africans learn and
-                contribute.
+                We are a technology company headquartered in Kigali. Our work spans
+                RWERU Studio client software, RWERU Products, RWERU Labs research, and
+                RWERU Community — helping Africans learn and contribute.
               </p>
             </div>
           </div>
@@ -62,9 +66,7 @@ export default function CompanyPage() {
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-display-s font-sans font-semibold">Our mission</h2>
               <p className="mt-8 font-serif text-body-lg leading-relaxed text-slate-medium">
-                To make high-quality software accessible to organizations across Rwanda
-                and Africa — and to grow the people who will build the next generation of
-                continental technology.
+                {brand.description}
               </p>
             </div>
           </div>
@@ -87,6 +89,26 @@ export default function CompanyPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="border-t border-slate/10 bg-ivory">
+          <div className="site-container section-y">
+            <h2 className="text-display-s font-sans font-semibold">
+              About the RWERU name
+            </h2>
+            <div className="mt-10 flex flex-col gap-0">
+              {brandFaq.map((item) => (
+                <div key={item.question} className="border-t border-slate/10 py-8">
+                  <h3 className="font-sans text-lg font-semibold text-slate">
+                    {item.question}
+                  </h3>
+                  <p className="mt-3 max-w-[60ch] font-serif text-base leading-relaxed text-slate-medium">
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

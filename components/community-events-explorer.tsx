@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { blogPosts } from "@/lib/blog-data";
 import { RsvpForm } from "@/components/rsvp-form";
 import { buildIcsDataUrl } from "@/lib/ics";
+import { brand } from "@/lib/brand";
 
 function Chevron({ open }: { open: boolean }) {
   return (
@@ -312,10 +313,10 @@ export function CommunityEventsExplorer() {
   return (
     <>
       <section className="site-container section-y text-center">
-        <h1 className="sr-only">RweruSynapse Community</h1>
+        <h1 className="sr-only">{brand.community}</h1>
         <p className="mx-auto max-w-[36ch] font-serif text-body-lg text-slate-medium md:text-2xl">
           Discover upcoming workshops, ship nights, and learning sessions — built for
-          youth and builders across Rwanda and Africa.
+          developers, founders, students, and creators across Rwanda and Africa.
         </p>
         <a href="#events" className="btn-primary mt-10 inline-flex">
           Browse all events
@@ -519,11 +520,11 @@ export function CommunityEventsExplorer() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <h2 className="text-display-s font-sans font-semibold">
-                Join the Synapse Community
+                Join {brand.community}
               </h2>
               <p className="mt-4 max-w-[40ch] font-serif text-lg text-ivory/70">
-                Event invites, learning paths, and community spotlights — for youth who
-                want to learn and ship in Africa.
+                Event invites, learning paths, and community spotlights — for African
+                developers, founders, students, and creators who want to learn and ship.
               </p>
             </div>
             <form className="flex flex-col gap-3 sm:flex-row lg:col-span-5">

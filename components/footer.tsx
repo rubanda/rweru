@@ -1,42 +1,48 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { NewsletterForm } from "@/components/newsletter-form";
+import { brand, socialLinks } from "@/lib/brand";
 
 const columns = [
   {
+    title: "Products",
+    links: [
+      { href: "/products", label: "RWERU Products" },
+      { href: "/products#masata", label: "Masata" },
+    ],
+  },
+  {
     title: "Solutions",
     links: [
-      { href: "/solutions", label: "Overview" },
+      { href: "/solutions", label: "RWERU Studio" },
       { href: "/solutions#products", label: "Custom software" },
       { href: "/solutions#platforms", label: "Platforms" },
-      { href: "/use-cases", label: "Use cases" },
+      { href: "/use-cases", label: "Client work" },
     ],
   },
   {
     title: "Research",
     links: [
-      { href: "/research", label: "Overview" },
+      { href: "/research", label: "RWERU Labs" },
       { href: "/research#focus", label: "Focus areas" },
-      { href: "/research#publications", label: "Publications" },
+      { href: "/research#publications", label: "Writing" },
     ],
   },
   {
-    title: "Learn",
+    title: "Community",
     links: [
-      { href: "/community", label: "Community" },
+      { href: "/community", label: "RWERU Community" },
       { href: "/community#events", label: "Events" },
       { href: "/community#learn", label: "Learning paths" },
       { href: "/community#join", label: "Join" },
-      { href: "/blog", label: "Blog" },
     ],
   },
   {
     title: "Company",
     links: [
       { href: "/company", label: "About" },
-      { href: "/company#mission", label: "Mission" },
+      { href: "/blog", label: "Blog" },
       { href: "/contact", label: "Contact" },
-      { href: "/blog", label: "News" },
     ],
   },
 ];
@@ -63,15 +69,31 @@ export function Footer() {
         <div className="mt-12 grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <Logo tone="dark" />
-            <p className="mt-4 max-w-[22ch] font-serif text-base leading-relaxed text-ivory/70">
-              Software, research, and community — built in Rwanda for Africa.
+            <p className="mt-4 max-w-[24ch] font-serif text-base leading-relaxed text-ivory/70">
+              {brand.tagline}
             </p>
-            <p className="mt-8 text-meta text-cloud">
-              © {new Date().getFullYear()} RweruSynapse
-            </p>
+            <div className="mt-6 flex flex-col gap-1.5 text-sm text-ivory/60">
+              <a href={`mailto:${brand.email}`} className="transition-colors hover:text-ivory">
+                {brand.email}
+              </a>
+              <p>{brand.location}</p>
+            </div>
+            <div className="mt-6 flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-ivory/60 transition-colors hover:text-ivory"
+                >
+                  {social.label}
+                </a>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:col-span-9">
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-9 lg:grid-cols-5">
             {columns.map((column) => (
               <div key={column.title} className="flex flex-col gap-3">
                 <h3 className="text-sm font-medium text-ivory">{column.title}</h3>
@@ -87,6 +109,12 @@ export function Footer() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-12 border-t border-ivory/10 pt-6">
+          <p className="text-meta text-cloud">
+            © {new Date().getFullYear()} {brand.company}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

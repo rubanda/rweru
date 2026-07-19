@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { communityEvents } from "@/lib/events";
+import { brand } from "@/lib/brand";
 
 export function CommunityEventsTeaser() {
   const upcoming = communityEvents
@@ -11,12 +12,13 @@ export function CommunityEventsTeaser() {
     <section className="site-container section-y border-t border-slate/10">
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
-          <p className="text-meta mb-4">Community</p>
+          <p className="text-meta mb-4">{brand.community}</p>
           <h2 className="text-display-s font-sans font-semibold text-slate">
             Learn together. Ship together.
           </h2>
           <p className="mt-4 max-w-[42ch] font-serif text-body-lg text-slate-medium">
-            Workshops, ship nights, and learning paths for youth across Rwanda and Africa.
+            Workshops, ship nights, and learning paths for developers, founders, and
+            students across Rwanda and Africa.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

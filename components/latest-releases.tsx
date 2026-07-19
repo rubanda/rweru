@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const releases = [
   {
-    title: "Opening the Synapse Community",
+    title: "Opening the RWERU Community",
     body: "A space for African developers, designers, and founders to learn, ship, and contribute together.",
     date: "Jul 2026",
     category: "Community",
@@ -26,10 +26,19 @@ const releases = [
 
 export function LatestReleases() {
   return (
-    <section className="site-container section-y">
-      <h2 className="text-display-s font-sans font-semibold text-slate">
-        Latest releases
-      </h2>
+    <section className="site-container section-y border-t border-slate/10">
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="max-w-2xl">
+          <p className="text-meta mb-4">Current work</p>
+          <h2 className="text-display-s font-sans font-semibold text-slate">
+            Build logs &amp; articles
+          </h2>
+        </div>
+        <Link href="/blog" className="btn-secondary shrink-0">
+          Read the blog
+          <span aria-hidden>→</span>
+        </Link>
+      </div>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
         {releases.map((item) => (
           <article

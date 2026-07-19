@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { brand } from "@/lib/brand";
 
 export function MissionBand() {
   return (
@@ -34,15 +35,14 @@ export function MissionBand() {
       </div>
 
       <div className="site-container relative flex min-h-[70vh] flex-col items-center justify-center py-24 text-center">
-        <h2 className="text-cta-display max-w-[14ch] font-serif font-normal">
-          Built on hard problems worth solving.
+        <h2 className="text-cta-display max-w-[18ch] font-serif font-normal">
+          {brand.tagline}
         </h2>
-        <p className="mt-8 max-w-[28ch] font-serif text-lg leading-relaxed text-ivory/70">
-          From local startups to continental platforms — we design systems that work in
-          African contexts.
+        <p className="mt-8 max-w-[42ch] font-serif text-lg leading-relaxed text-ivory/70">
+          {brand.description}
         </p>
         <Link href="/company" className="btn-on-dark mt-10">
-          Learn more
+          Learn more about {brand.company}
           <span aria-hidden>→</span>
         </Link>
       </div>
