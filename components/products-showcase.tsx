@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { products } from "@/lib/products";
 import { masata } from "@/lib/brand";
@@ -50,12 +51,23 @@ export function ProductsShowcase() {
               </Link>
             </div>
           </div>
-          <div
-            aria-hidden
-            className="hidden items-center justify-center lg:col-span-5 lg:flex"
-          >
-            <div className="flex h-40 w-40 items-center justify-center rounded-3xl bg-slate text-ivory">
-              <span className="font-sans text-2xl font-bold tracking-tight">Masata</span>
+          <div className="hidden lg:col-span-5 lg:block">
+            <div className="overflow-hidden rounded-2xl border border-slate/10 bg-ivory shadow-sm">
+              <div className="flex items-center gap-1.5 border-b border-slate/10 px-3 py-2">
+                <span className="size-2 rounded-full bg-slate/20" />
+                <span className="size-2 rounded-full bg-slate/20" />
+                <span className="size-2 rounded-full bg-slate/20" />
+                <span className="ml-2 truncate font-mono text-[0.65rem] text-slate-light">
+                  masata.app
+                </span>
+              </div>
+              <Image
+                src="/products/masata-screenshot.png"
+                alt="Screenshot of the Masata by RWERU platform"
+                width={1440}
+                height={900}
+                className="h-auto w-full"
+              />
             </div>
           </div>
         </div>
