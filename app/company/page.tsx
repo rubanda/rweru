@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Company",
   description:
-    "About RweruSynapse — a software company in Rwanda building solutions, research, and community for Africa.",
+    "About RweruSynapse — a Rwanda-based technology company building software, AI products, and community for Africa.",
   alternates: { canonical: "/company" },
   openGraph: {
     title: "Company | RweruSynapse",
     description:
-      "About RweruSynapse — a software company in Rwanda building solutions, research, and community for Africa.",
+      "About RweruSynapse — a Rwanda-based technology company building software, AI products, and community for Africa.",
     url: "/company",
   },
 };
@@ -44,14 +45,14 @@ export default function CompanyPage() {
             <div className="lg:col-span-7">
               <p className="text-meta mb-6">Company</p>
               <h1 className="text-display-xl font-sans font-bold text-slate">
-                RweruSynapse is building Africa&apos;s software capacity from Rwanda.
+                RweruSynapse is building Africa&apos;s technology capacity from Rwanda.
               </h1>
             </div>
             <div className="flex items-end lg:col-span-5">
               <p className="max-w-[40ch] font-serif text-body-lg text-slate-medium">
-                We are a software company headquartered in Kigali. Our work spans product
-                engineering, research, and a community that helps Africans learn and
-                contribute.
+                We are a technology company headquartered in Kigali. Our work spans
+                RWERU Studio client software, RWERU Products, RWERU Labs research, and
+                RWERU Community — helping Africans learn and contribute.
               </p>
             </div>
           </div>
@@ -62,9 +63,7 @@ export default function CompanyPage() {
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="text-display-s font-sans font-semibold">Our mission</h2>
               <p className="mt-8 font-serif text-body-lg leading-relaxed text-slate-medium">
-                To make high-quality software accessible to organizations across Rwanda
-                and Africa — and to grow the people who will build the next generation of
-                continental technology.
+                {brand.description}
               </p>
             </div>
           </div>

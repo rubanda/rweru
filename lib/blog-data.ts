@@ -130,7 +130,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: "opening-synapse-community",
-    title: "Opening the Synapse Community",
+    title: "Opening the RWERU Community",
     excerpt:
       "Why we are building a place for Africans to learn software together — and how you can contribute from day one.",
     author: {
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Why we're building this in the open",
         paragraphs: [
-          "We didn't start RweruSynapse to only ship client work quietly. Every project we build teaches us something about African infrastructure, users, and constraints — and we think that knowledge is more useful shared than kept internal. The Synapse Community exists to pass that on directly, through workshops, ship nights, and open contribution, rather than through occasional conference talks.",
+          "We didn't start RweruSynapse to only ship client work quietly. Every project we build teaches us something about African infrastructure, users, and constraints — and we think that knowledge is more useful shared than kept internal. RWERU Community exists to pass that on directly, through workshops, ship nights, and open contribution, rather than through occasional conference talks.",
         ],
       },
       {

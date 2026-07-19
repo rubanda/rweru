@@ -2,38 +2,20 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { studioOfferings } from "@/lib/solutions";
 
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Custom software, platforms, and digital products from RweruSynapse for organizations across Rwanda and Africa.",
+    "RWERU Studio — custom software, platforms, and digital products from RweruSynapse for organizations across Rwanda and Africa.",
   alternates: { canonical: "/solutions" },
   openGraph: {
     title: "Solutions | RweruSynapse",
     description:
-      "Custom software, platforms, and digital products from RweruSynapse for organizations across Rwanda and Africa.",
+      "RWERU Studio — custom software, platforms, and digital products from RweruSynapse for organizations across Rwanda and Africa.",
     url: "/solutions",
   },
 };
-
-const offerings = [
-  {
-    title: "Custom software",
-    body: "Web and mobile products engineered for reliability — from MVP to production scale.",
-  },
-  {
-    title: "Platforms & SaaS",
-    body: "Multi-tenant systems for operations, content, community, and internal tools.",
-  },
-  {
-    title: "Product design",
-    body: "Research-led UX that respects local workflows, languages, and device realities.",
-  },
-  {
-    title: "Engineering partnership",
-    body: "Embedded teams that ship with your organization — architecture, delivery, and mentorship.",
-  },
-];
 
 export default function SolutionsPage() {
   return (
@@ -43,16 +25,16 @@ export default function SolutionsPage() {
         <section className="site-container section-y">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <p className="text-meta mb-6">Solutions</p>
+              <p className="text-meta mb-6">RWERU Studio</p>
               <h1 className="text-display-xl font-sans font-bold text-slate">
                 Software solutions for Rwanda and Africa.
               </h1>
             </div>
             <div className="flex items-end lg:col-span-5">
               <p className="max-w-[40ch] font-serif text-body-lg text-slate-medium">
-                We partner with startups, enterprises, and institutions to design and
-                ship products that work where your users are — starting in Kigali,
-                serving the continent.
+                RWERU Studio is our client-services division. We partner with startups,
+                enterprises, and institutions to design and ship products that work
+                where your users are — starting in Kigali, serving the continent.
               </p>
             </div>
           </div>
@@ -61,7 +43,7 @@ export default function SolutionsPage() {
         <section id="products" className="border-t border-slate/10 bg-ivory">
           <div className="site-container section-y">
             <div className="grid gap-6 md:grid-cols-2">
-              {offerings.map((item) => (
+              {studioOfferings.map((item) => (
                 <article
                   key={item.title}
                   className="rounded-2xl bg-oat p-8 md:p-10"

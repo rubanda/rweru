@@ -5,16 +5,17 @@ import { CommunityEventsExplorer } from "@/components/community-events-explorer"
 import { RsvpForm } from "@/components/rsvp-form";
 import { EventJsonLd } from "@/components/structured-data";
 import { communityEvents } from "@/lib/events";
+import { brand } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Community",
   description:
-    "Workshops, ship nights, and learning paths for youth and builders across Rwanda and Africa — from RweruSynapse.",
+    "RWERU Community — workshops, ship nights, and learning paths for African developers, founders, students, and creators.",
   alternates: { canonical: "/community" },
   openGraph: {
     title: "Community | RweruSynapse",
     description:
-      "Workshops, ship nights, and learning paths for youth and builders across Rwanda and Africa — from RweruSynapse.",
+      "RWERU Community — workshops, ship nights, and learning paths for African developers, founders, students, and creators.",
     url: "/community",
   },
 };
@@ -99,7 +100,7 @@ export default function CommunityPage() {
               <div className="border-t border-slate/10 pt-6">
                 <h3 className="font-sans text-lg font-semibold text-slate">A real title</h3>
                 <p className="mt-3 font-serif text-sm leading-relaxed text-slate-medium">
-                  Recognition as a RweruSynapse Community Ambassador — on the site, in
+                  Recognition as a {brand.community} Ambassador — on the site, in
                   recaps, and as a reference for future opportunities.
                 </p>
               </div>
@@ -137,7 +138,7 @@ export default function CommunityPage() {
                 <div className="rounded-2xl bg-ivory p-7">
                   <RsvpForm
                     eventSlug="general-volunteer"
-                    eventTitle="the RweruSynapse community"
+                    eventTitle={brand.community}
                   />
                 </div>
               </div>

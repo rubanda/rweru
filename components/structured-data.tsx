@@ -1,17 +1,20 @@
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rweru.com";
+import { brand, siteUrl } from "@/lib/brand";
+
+const baseUrl = siteUrl;
 
 export function OrganizationJsonLd() {
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "RweruSynapse",
+    name: brand.company,
+    alternateName: brand.short,
     url: baseUrl,
-    logo: `${baseUrl}/favicon.ico`,
-    description:
-      "RweruSynapse builds software solutions for Rwanda and Africa — products, research, blogs, and a community where Africans learn and contribute.",
+    logo: `${baseUrl}/icon`,
+    description: brand.description,
+    slogan: brand.tagline,
     contactPoint: {
       "@type": "ContactPoint",
-      email: "hello@rweru.com",
+      email: brand.email,
       contactType: "customer support",
     },
     address: {
@@ -19,6 +22,7 @@ export function OrganizationJsonLd() {
       addressLocality: "Kigali",
       addressCountry: "RW",
     },
+    sameAs: [brand.social.x, brand.social.linkedin, brand.social.instagram, brand.social.github],
   };
 
   return (
@@ -42,7 +46,7 @@ type BlogPostingJsonLdProps = {
 export function BlogPostingJsonLd({ post }: BlogPostingJsonLdProps) {
   const organization = {
     "@type": "Organization",
-    name: "RweruSynapse",
+    name: brand.company,
   };
 
   const data = {

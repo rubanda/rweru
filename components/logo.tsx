@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { brand } from "@/lib/brand";
 
 type LogoProps = {
   href?: string;
@@ -18,7 +19,7 @@ export function Logo({
     <Link
       href={href}
       onClick={onClick}
-      aria-label="RweruSynapse home"
+      aria-label={`${brand.company} home`}
       className={cn(
         "font-sans text-[0.95rem] font-bold uppercase leading-none tracking-[0.08em] transition-opacity hover:opacity-80 sm:text-[1.05rem]",
         tone === "light" ? "text-slate" : "text-ivory",
