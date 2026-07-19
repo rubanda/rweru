@@ -47,7 +47,7 @@ export function ProductsShowcase() {
                 <span aria-hidden>→</span>
               </a>
               <Link href="/products" className="btn-secondary">
-                Learn more
+                Explore RWERU Products
               </Link>
             </div>
           </div>

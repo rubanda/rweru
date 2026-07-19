@@ -60,7 +60,7 @@ export function NewsletterForm({
           aria-label="Email address"
           className={
             isDark
-              ? "h-11 min-w-0 flex-1 rounded-lg border border-ivory/15 bg-ivory/5 px-4 text-sm text-ivory placeholder:text-ivory/40 outline-none focus:border-kraft focus:ring-2 focus:ring-kraft/20"
+              ? "h-11 min-w-0 flex-1 rounded-lg border border-ivory/15 bg-ivory/5 px-4 text-sm text-ivory placeholder:text-ivory/60 outline-none focus:border-kraft focus:ring-2 focus:ring-kraft/20"
               : "h-11 min-w-0 flex-1 rounded-lg border border-slate/10 bg-ivory px-4 text-sm outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
           }
         />
