@@ -3,6 +3,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { brand } from "@/lib/brand";
 import { BreadcrumbJsonLd } from "@/components/structured-data";
+import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -50,65 +51,7 @@ export default function ContactPage() {
             </div>
 
             <div className="lg:col-span-7">
-              <form className="rounded-2xl bg-oat p-8 md:p-10">
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Your name"
-                      className="h-12 rounded-lg border border-slate/10 bg-ivory px-4 text-sm outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="you@organization.com"
-                      className="h-12 rounded-lg border border-slate/10 bg-ivory px-4 text-sm outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
-                    />
-                  </div>
-                </div>
-                <div className="mt-6 flex flex-col gap-2">
-                  <label htmlFor="interest" className="text-sm font-medium">
-                    I&apos;m interested in
-                  </label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    className="h-12 rounded-lg border border-slate/10 bg-ivory px-4 text-sm outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
-                  >
-                    <option>Software solutions (RWERU Studio)</option>
-                    <option>Products (RWERU Products / Masata)</option>
-                    <option>Research collaboration (RWERU Labs)</option>
-                    <option>Community / learning</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div className="mt-6 flex flex-col gap-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Tell us about your project or question..."
-                    className="resize-none rounded-lg border border-slate/10 bg-ivory p-4 text-sm outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
-                  />
-                </div>
-                <button type="submit" className="btn-primary mt-8 w-full sm:w-auto">
-                  Send message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>

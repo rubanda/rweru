@@ -1,75 +1,67 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { UseCase } from "@/lib/use-cases";
 
-function domainFromUrl(url: string) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
+function ArrowIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M3.5 8h9M8.5 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }
 
-export function UseCaseCard({ item }: { item: UseCase }) {
-  const domain = domainFromUrl(item.href);
-
+export function UseCaseCard({
+  item,
+  priority = false,
+}: {
+  item: UseCase;
+  priority?: boolean;
+}) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl bg-oat transition-transform duration-300 hover:-translate-y-0.5">
+    <article className="group flex h-full flex-col">
       <Link
         href={item.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex h-full flex-col"
+        className="flex h-full flex-col rounded-[1.75rem] outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-clay"
       >
-        <div className="relative aspect-video overflow-hidden bg-ivory-dark p-3 md:p-4">
-          <div className="flex h-full flex-col rounded-lg border border-slate/10 bg-ivory shadow-sm">
-            <div className="flex items-center gap-1.5 border-b border-slate/10 px-2.5 py-1.5">
-              <span className="size-1.5 rounded-full bg-slate/20" />
-              <span className="size-1.5 rounded-full bg-slate/20" />
-              <span className="size-1.5 rounded-full bg-slate/20" />
-              <span className="ml-2 truncate font-mono text-[0.6rem] text-slate-light">
-                {domain}
-              </span>
-            </div>
-            <div className="flex flex-1 flex-col justify-end p-3">
-              <p className="text-meta mb-1">{item.category}</p>
-              <p className="font-sans text-sm font-semibold leading-snug text-slate md:text-base">
-                {item.title.split("—")[0].trim()}
-              </p>
-            </div>
-          </div>
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-oat ring-1 ring-slate/10">
+          <Image
+            src={item.image}
+            alt={`Preview of ${item.title}`}
+            fill
+            priority={priority}
+            sizes="(min-width: 1280px) 28vw, (min-width: 768px) 40vw, 100vw"
+            className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+          />
         </div>
 
-        <div className="flex flex-1 flex-col p-5">
-          <h3 className="font-sans text-base font-semibold leading-snug text-slate">
-            {item.title}
-          </h3>
-          <p className="mt-2 line-clamp-2 font-serif text-[0.95rem] leading-relaxed text-slate-medium">
-            {item.description}
-          </p>
+        <div className="mt-5 h-px bg-slate" />
 
-          {item.outcome ? (
-            <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-clay">
-              <span className="font-medium">Result: </span>
-              {item.outcome}
-            </p>
-          ) : null}
+        <p className="mt-4 text-meta text-slate">
+          {item.category}
+          <span className="mx-2 text-cloud" aria-hidden>
+            ·
+          </span>
+          {item.location}
+        </p>
 
-          <dl className="mt-4 flex flex-col gap-1.5 border-t border-slate/10 pt-4">
-            <div className="flex justify-between gap-4">
-              <dt className="text-meta">Author</dt>
-              <dd className="text-meta text-slate-light">{item.author}</dd>
-            </div>
-            <div className="flex justify-between gap-4">
-              <dt className="text-meta">Product</dt>
-              <dd className="text-meta text-slate-light">{item.product}</dd>
-            </div>
-          </dl>
+        <h3 className="mt-2 font-sans text-xl font-bold leading-snug tracking-tight text-slate md:text-[1.35rem]">
+          {item.title}
+        </h3>
 
-          <span className="mt-4 inline-flex w-fit items-center gap-2 rounded-lg bg-slate px-3.5 py-1.5 text-sm font-medium text-ivory">
+        <div className="mt-auto flex items-center gap-2 pt-6">
+          <span className="flex-1 rounded-full bg-ivory-dark px-5 py-2.5 text-center text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-slate transition-colors group-hover:bg-oat">
             View site
-            <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-              →
-            </span>
+          </span>
+          <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-ivory-dark text-slate transition-colors group-hover:bg-oat">
+            <ArrowIcon />
           </span>
         </div>
       </Link>

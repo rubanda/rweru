@@ -33,7 +33,7 @@ export const brand = {
   labs: "RWERU Labs",
   products: "RWERU Products",
   community: "RWERU Community",
-  email: "hello@rweru.com",
+  email: "rwerusynapse@gmail.com",
   location: "Kigali, Rwanda",
   social: {
     handle: "@rwerusynapse",

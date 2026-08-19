@@ -5,6 +5,7 @@ export type UseCase = {
   challenge: string;
   outcome: string;
   href: string;
+  image: string;
   author: string;
   category: string;
   product: string;
@@ -24,11 +25,46 @@ export const useCases: UseCase[] = [
     outcome:
       "One multi-tenant platform now runs New Jerusalem Church's Rwanda and Luxembourg sites side by side, with a single codebase we maintain and extend for every new branch.",
     href: "https://masata.app",
+    image: "/work/masata.jpg",
     author: "RweruSynapse",
     category: "Platform",
     product: "Masata",
     features: ["SaaS", "Multi-tenant", "Operations"],
     location: "Africa & Europe",
+  },
+  {
+    slug: "ibara",
+    title: "Ibara — Rwanda, told through art",
+    description:
+      "A marketplace for authentic art, crafts, and gifts from verified Rwandan creators — buy online, receive it at a hotel in Kigali, or ship it home.",
+    challenge:
+      "Travellers and collectors had no trusted way to buy original Rwandan work from verified artists, or to receive it before they left the country.",
+    outcome:
+      "A live marketplace where verified creators sell directly, visitors can take Rwanda home, and artists keep up to 92% of each sale.",
+    href: "https://ibara.rw",
+    image: "/work/ibara.jpg",
+    author: "RweruSynapse",
+    category: "Marketplace",
+    product: "Website",
+    features: ["E-commerce", "Art", "Rwanda"],
+    location: "Kigali, Rwanda",
+  },
+  {
+    slug: "zmk",
+    title: "ZMK Group — engineering tomorrow",
+    description:
+      "Corporate website for a Kigali group spanning energy, technical systems, events, and a creative studio — four specialist divisions, one accountable partner.",
+    challenge:
+      "Four specialist practices needed one credible public home that could explain the group without flattening each division into a generic company page.",
+    outcome:
+      "A single site that presents ZMK as one partner across energy, engineering, events, and media, with a clear path to start a project.",
+    href: "https://zmk.rw",
+    image: "/work/zmk.jpg",
+    author: "RweruSynapse",
+    category: "Corporate",
+    product: "Website",
+    features: ["Energy", "Events", "Rwanda"],
+    location: "Kigali, Rwanda",
   },
   {
     slug: "njc-rwanda",
@@ -40,6 +76,7 @@ export const useCases: UseCase[] = [
     outcome:
       "A Masata-powered site the church team updates directly — sermons, events, and announcements go live without a developer in the loop.",
     href: "https://njc.org.rw",
+    image: "/work/njc-rwanda.jpg",
     author: "RweruSynapse",
     category: "Church",
     product: "Website",
@@ -57,6 +94,7 @@ export const useCases: UseCase[] = [
     outcome:
       "A booking-ready website guests can browse and reserve from directly, giving the hotel a digital front door that works around the clock.",
     href: "https://www.eza.rw",
+    image: "/work/eza-hotel.jpg",
     author: "RweruSynapse",
     category: "Hospitality",
     product: "Website",
@@ -73,6 +111,7 @@ export const useCases: UseCase[] = [
     outcome:
       "A public website that gives the mission a credible home online for outreach, updates, and community engagement.",
     href: "https://www.jfountainmission.org",
+    image: "/work/jfountain-mission.jpg",
     author: "RweruSynapse",
     category: "Non-profit",
     product: "Website",
@@ -89,6 +128,7 @@ export const useCases: UseCase[] = [
     outcome:
       "The Luxembourg branch launched on the same Masata platform as the Rwanda site — new branch, shared infrastructure, days not months to go live.",
     href: "https://www.newjerusalem.lu",
+    image: "/work/njc-lux.jpg",
     author: "RweruSynapse",
     category: "Church",
     product: "Website",
@@ -106,6 +146,7 @@ export const useCases: UseCase[] = [
     outcome:
       "A standalone personal site that gives his ministry work a durable, dedicated home online.",
     href: "https://www.rubandajacques.org",
+    image: "/work/rubanda-jacques.jpg",
     author: "RweruSynapse",
     category: "Ministry",
     product: "Website",

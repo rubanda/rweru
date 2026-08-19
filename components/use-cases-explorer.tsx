@@ -155,7 +155,7 @@ export function UseCasesExplorer() {
           </h1>
           <p className="mt-6 max-w-[46ch] font-sans text-base leading-relaxed text-slate-medium md:text-lg">
             Browse practical websites and applications across churches, hospitality,
-            non-profits, and platforms — shipped for Rwanda, Uganda, and Europe.
+            marketplaces, non-profits, and platforms — shipped for Rwanda, Uganda, and Europe.
           </p>
         </div>
       </section>
@@ -258,9 +258,9 @@ export function UseCasesExplorer() {
                 </button>
               </div>
             ) : view === "grid" ? (
-              <div className="grid gap-6 md:grid-cols-2">
-                {filtered.map((item) => (
-                  <UseCaseCard key={item.slug} item={item} />
+              <div className="grid gap-8 md:grid-cols-2">
+                {filtered.map((item, index) => (
+                  <UseCaseCard key={item.slug} item={item} priority={index < 2} />
                 ))}
               </div>
             ) : (

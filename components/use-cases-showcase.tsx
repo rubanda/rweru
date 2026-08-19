@@ -14,8 +14,8 @@ export function UseCasesShowcase() {
             Completed by RWERU Studio
           </h2>
           <p className="mt-4 max-w-[42ch] font-serif text-body-lg text-slate-medium">
-            Real websites and platforms we&apos;ve shipped for churches, hotels, and
-            non-profits across Rwanda, Uganda, and Europe — client-owned, built by us.
+            Real websites and platforms we&apos;ve shipped for churches, hotels,
+            marketplaces, and non-profits across Rwanda, Uganda, and Europe — client-owned, built by us.
           </p>
         </div>
         <Link href="/use-cases" className="btn-secondary shrink-0">
@@ -24,9 +24,9 @@ export function UseCasesShowcase() {
         </Link>
       </div>
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {featured.map((item) => (
-          <UseCaseCard key={item.slug} item={item} />
+      <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {featured.map((item, index) => (
+          <UseCaseCard key={item.slug} item={item} priority={index === 0} />
         ))}
       </div>
     </section>

@@ -7,12 +7,12 @@ import { BreadcrumbJsonLd } from "@/components/structured-data";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Client work delivered by RWERU Studio — New Jerusalem Church, Eza Hotel, jFountain Mission, and more, plus Masata in production.",
+    "Client work delivered by RWERU Studio — Ibara, ZMK Group, New Jerusalem Church, Eza Hotel, and more, plus Masata in production.",
   alternates: { canonical: "/use-cases" },
   openGraph: {
     title: "Work | RweruSynapse",
     description:
-      "Client work delivered by RWERU Studio — New Jerusalem Church, Eza Hotel, jFountain Mission, and more, plus Masata in production.",
+      "Client work delivered by RWERU Studio — Ibara, ZMK Group, New Jerusalem Church, Eza Hotel, and more, plus Masata in production.",
     url: "/use-cases",
   },
 };
