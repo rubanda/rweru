@@ -12,16 +12,16 @@
   --font-mono: var(--font-mono);
 
   /* Cool library paper — readable like Anthropic, not ivory/clay */
-  --color-ivory: #f7f9fb;
-  --color-ivory-medium: #eef2f6;
-  --color-ivory-dark: #e3e9f0;
-  --color-oat: #d9e2eb;
-  --color-slate: #15202b;
-  --color-slate-medium: #3d4a57;
-  --color-slate-light: #4f5c6a;
+  --color-ivory: var(--paper);
+  --color-ivory-medium: var(--paper-medium);
+  --color-ivory-dark: var(--paper-dark);
+  --color-oat: var(--paper-oat);
+  --color-slate: var(--ink);
+  --color-slate-medium: var(--ink-medium);
+  --color-slate-light: var(--ink-light);
   --color-cloud: #8b96a3;
-  --color-cloud-dark: #4f5c6a;
-  --color-clay: #17665a;
+  --color-cloud-dark: var(--ink-light);
+  --color-clay: var(--teal);
   --color-kraft: #3d9a88;
 
   --color-sidebar-ring: var(--sidebar-ring);
@@ -63,6 +63,15 @@
 }
 
 :root {
+  color-scheme: light;
+  --paper: #f7f9fb;
+  --paper-medium: #eef2f6;
+  --paper-dark: #e3e9f0;
+  --paper-oat: #d9e2eb;
+  --ink: #15202b;
+  --ink-medium: #3d4a57;
+  --ink-light: #4f5c6a;
+  --teal: #17665a;
   --background: #eef2f6;
   --foreground: #15202b;
   --card: #f7f9fb;
@@ -97,6 +106,41 @@
   --sidebar-ring: #17665a;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #182633;
+  --paper-medium: #101c27;
+  --paper-dark: #223342;
+  --paper-oat: #253746;
+  --ink: #eef2f6;
+  --ink-medium: #bfccd8;
+  --ink-light: #a1b2c1;
+  --teal: #75d2bd;
+  --background: #101c27;
+  --foreground: #eef2f6;
+  --card: #182633;
+  --card-foreground: #eef2f6;
+  --popover: #182633;
+  --popover-foreground: #eef2f6;
+  --primary: #eef2f6;
+  --primary-foreground: #182633;
+  --secondary: #253746;
+  --secondary-foreground: #eef2f6;
+  --muted: #223342;
+  --muted-foreground: #a1b2c1;
+  --accent: #75d2bd;
+  --accent-foreground: #101c27;
+  --destructive: #ff9b91;
+  --border: #eef2f626;
+  --input: #eef2f626;
+  --ring: #75d2bd;
+}
+
+.playground-navy {
+  background: #15202b;
+  color: #f7f9fb;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -104,6 +148,11 @@
 
   html {
     scroll-behavior: smooth;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 3px;
   }
 
   body {
@@ -209,6 +258,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   .fade-up,
   .fade-up-delay,
   .network-drift {

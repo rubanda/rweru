@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { brand, socialLinks } from "@/lib/brand";
+import { KigaliClock } from "@/components/kigali-clock";
 
 const columns = [
   {
@@ -18,6 +19,7 @@ const columns = [
       { href: "/solutions#products", label: "Custom software" },
       { href: "/solutions#platforms", label: "Platforms" },
       { href: "/use-cases", label: "Client work" },
+      { href: "/playground", label: "Playground" },
     ],
   },
   {
@@ -57,8 +59,8 @@ export function Footer() {
               Get build logs & event invites
             </h3>
             <p className="mt-1 max-w-[38ch] text-sm text-ivory/60">
-              One email, roughly weekly — what we shipped, what we&apos;re researching, and
-              what&apos;s next in the community.
+              One email, roughly weekly — what we shipped, what we&apos;re
+              researching, and what&apos;s next in the community.
             </p>
           </div>
           <div className="w-full max-w-sm">
@@ -73,7 +75,10 @@ export function Footer() {
               {brand.tagline}
             </p>
             <div className="mt-6 flex flex-col gap-1.5 text-sm text-ivory/60">
-              <a href={`mailto:${brand.email}`} className="transition-colors hover:text-ivory">
+              <a
+                href={`mailto:${brand.email}`}
+                className="transition-colors hover:text-ivory"
+              >
                 {brand.email}
               </a>
               <p>{brand.location}</p>
@@ -96,7 +101,9 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-9 lg:grid-cols-5">
             {columns.map((column) => (
               <div key={column.title} className="flex flex-col gap-3">
-                <h3 className="text-sm font-medium text-ivory">{column.title}</h3>
+                <h3 className="text-sm font-medium text-ivory">
+                  {column.title}
+                </h3>
                 {column.links.map((link) => (
                   <Link
                     key={link.href + link.label}
@@ -111,10 +118,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-ivory/10 pt-6">
+        <div className="mt-12 flex flex-col justify-between gap-4 border-t border-ivory/10 pt-6 md:flex-row md:items-center">
           <p className="text-meta text-cloud">
             © {new Date().getFullYear()} {brand.company}. All rights reserved.
           </p>
+          <KigaliClock dark />
         </div>
       </div>
     </footer>

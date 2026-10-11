@@ -40,7 +40,8 @@ async function sendEmail({
     return;
   }
 
-  const from = process.env.RESEND_FROM_EMAIL ?? "RweruSynapse <onboarding@resend.dev>";
+  const from =
+    process.env.RESEND_FROM_EMAIL ?? "RweruSynapse <onboarding@resend.dev>";
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -56,6 +57,7 @@ async function sendEmail({
       html,
       ...(replyTo ? { reply_to: replyTo } : {}),
     }),
+    signal: AbortSignal.timeout(15_000),
   });
 
   if (!response.ok) {
@@ -97,5 +99,22 @@ export async function notifyContact(payload: ContactNotifyPayload) {
     text,
     html,
     replyTo: payload.email,
+  });
+}
+
+export async function notifyPlaygroundLead(payload: {
+  name: string;
+  email: string;
+  whatsapp: string;
+  source: string;
+  summary: string;
+}) {
+  const text = `New Playground enquiry\n\nName: ${payload.name}\nEmail: ${payload.email || "Not provided"}\nWhatsApp: ${payload.whatsapp || "Not provided"}\nTool: ${payload.source}\nConsent: Contact about this project (no newsletter subscription)\n\n${payload.summary}`;
+  await sendEmail({
+    to: inbox,
+    subject: `Playground: ${payload.source} — ${payload.name}`,
+    text,
+    html: `<p>${escapeHtml(text).replaceAll("\n", "<br />")}</p>`,
+    ...(payload.email ? { replyTo: payload.email } : {}),
   });
 }

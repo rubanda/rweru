@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const navLinks = [
   { href: "/products", label: "Products" },
@@ -12,16 +13,53 @@ const navLinks = [
   { href: "/use-cases", label: "Work" },
   { href: "/company", label: "Company" },
   { href: "/blog", label: "Blog" },
+  { href: "/playground", label: "Playground" },
 ];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    document.querySelector<HTMLAnchorElement>("#mobile-navigation a")?.focus();
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+      if (event.key !== "Tab") return;
+      const items = Array.from(
+        headerRef.current?.querySelectorAll<HTMLElement>("a[href], button") ??
+          [],
+      ).filter((item) => item.offsetParent !== null);
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last?.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first?.focus();
+      }
+    };
+    const onResize = () => {
+      if (window.innerWidth >= 1280) setIsMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
     };
   }, [isMenuOpen]);
 
@@ -33,7 +71,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header ref={headerRef} className="sticky top-0 z-50">
       <div
         className={`transition-[background-color,backdrop-filter] duration-300 ${
           scrolled || isMenuOpen
@@ -44,7 +82,7 @@ export function Header() {
         <nav className="site-container flex h-[4.25rem] items-center justify-between gap-6">
           <Logo onClick={() => setIsMenuOpen(false)} />
 
-          <div className="hidden items-center gap-5 xl:gap-7 lg:flex">
+          <div className="hidden items-center gap-4 xl:gap-5 xl:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -57,21 +95,41 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="btn-primary hidden sm:inline-flex">
-              Talk to us
-            </Link>
+            <ThemeToggle />
+            <div className="hidden sm:block">
+              <Link href="/contact" className="btn-primary whitespace-nowrap">
+                Talk to us
+              </Link>
+            </div>
             <button
+              ref={menuButtonRef}
               type="button"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="flex size-10 items-center justify-center rounded-lg text-slate transition-colors hover:bg-slate/5 lg:hidden"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
+              className="flex size-10 items-center justify-center rounded-lg text-slate transition-colors hover:bg-slate/5 xl:hidden"
               onClick={() => setIsMenuOpen((open) => !open)}
             >
               <span className="sr-only">Menu</span>
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                aria-hidden
+              >
                 {isMenuOpen ? (
-                  <path d="M4 4l10 10M14 4L4 14" stroke="currentColor" strokeWidth="1.5" />
+                  <path
+                    d="M4 4l10 10M14 4L4 14"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
                 ) : (
-                  <path d="M3 5h12M3 9h12M3 13h12" stroke="currentColor" strokeWidth="1.5" />
+                  <path
+                    d="M3 5h12M3 9h12M3 13h12"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
                 )}
               </svg>
             </button>
@@ -80,8 +138,13 @@ export function Header() {
       </div>
 
       <div
-        className={`fixed inset-x-0 top-[4.25rem] bottom-0 z-40 bg-ivory-medium transition-opacity duration-300 lg:hidden ${
-          isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        id="mobile-navigation"
+        inert={!isMenuOpen}
+        aria-hidden={!isMenuOpen}
+        className={`fixed inset-x-0 top-[4.25rem] bottom-0 z-40 overflow-y-auto bg-ivory-medium transition-opacity duration-300 xl:hidden ${
+          isMenuOpen
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
         }`}
       >
         <div className="site-container flex flex-col gap-6 py-10">

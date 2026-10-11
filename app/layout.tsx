@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Instrument_Sans, Source_Serif_4, JetBrains_Mono } from "next/font/google";
-import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/structured-data";
+import {
+  Instrument_Sans,
+  Source_Serif_4,
+  JetBrains_Mono,
+} from "next/font/google";
+import {
+  OrganizationJsonLd,
+  WebSiteJsonLd,
+} from "@/components/structured-data";
 import { brand, siteUrl } from "@/lib/brand";
 import "./globals.css";
 
@@ -83,9 +90,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
       className={`${instrumentSans.variable} ${sourceSerif.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen font-sans antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var saved=localStorage.getItem('rweru-theme');var theme=saved==='light'||saved==='dark'?saved:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=theme;document.documentElement.classList.toggle('dark',theme==='dark')}catch(e){}})();`,
+          }}
+        />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
         {children}
