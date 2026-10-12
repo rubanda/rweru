@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { brand } from "@/lib/brand";
+import { BuildWorkflow } from "@/components/build-workflow";
+import { contactHref } from "@/lib/playground";
 
 export function Hero() {
   return (
     <section className="site-container section-y">
       <p className="fade-up text-meta mb-6">
-        {brand.short} — Technology company based in Rwanda
+        {brand.short} — Building technology for Africa&apos;s future
       </p>
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="fade-up lg:col-span-7">
           <h1 className="text-display-xl font-sans font-bold text-slate">
-            Building technology for Africa&apos;s future.
+            Software and AI for Africa&apos;s businesses.
           </h1>
         </div>
         <div className="fade-up-delay flex flex-col justify-end lg:col-span-5">
@@ -19,7 +21,7 @@ export function Hero() {
             to solve meaningful problems, and support a growing community of African
             builders.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link href="/use-cases" className="btn-primary">
               Explore our work
               <span aria-hidden>→</span>
@@ -27,9 +29,19 @@ export function Hero() {
             <Link href="/community" className="btn-secondary">
               Join the community
             </Link>
+            <a
+              href={contactHref("Hello Rweru! I’d like to discuss a project.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 px-1 text-sm font-medium text-slate-medium transition-colors hover:text-clay"
+            >
+              WhatsApp us
+              <span aria-hidden>↗</span>
+            </a>
           </div>
         </div>
       </div>
+      <BuildWorkflow />
     </section>
   );
 }
