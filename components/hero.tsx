@@ -1,16 +1,17 @@
 import Link from "next/link";
 import { brand } from "@/lib/brand";
+import { BuildWorkflow } from "@/components/build-workflow";
 
 export function Hero() {
   return (
     <section className="site-container section-y">
       <p className="fade-up text-meta mb-6">
-        {brand.short} — Technology company based in Rwanda
+        {brand.short} — Building technology for Africa&apos;s future
       </p>
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="fade-up lg:col-span-7">
           <h1 className="text-display-xl font-sans font-bold text-slate">
-            Building technology for Africa&apos;s future.
+            Software and AI for Africa&apos;s businesses.
           </h1>
         </div>
         <div className="fade-up-delay flex flex-col justify-end lg:col-span-5">
@@ -30,6 +31,7 @@ export function Hero() {
           </div>
         </div>
       </div>
+      <BuildWorkflow />
     </section>
   );
 }

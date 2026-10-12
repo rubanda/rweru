@@ -237,6 +237,218 @@
   }
 }
 
+.build-workflow {
+  position: relative;
+  margin-top: clamp(2rem, 4vw, 3.25rem);
+}
+
+.build-workflow-track {
+  display: none;
+  position: absolute;
+  top: 0.7rem;
+  right: 10%;
+  left: 10%;
+  height: 1px;
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.build-workflow-progress {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--teal);
+  animation: workflow-progress 1.8s ease-out 0.2s forwards;
+}
+
+.build-workflow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.build-workflow-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  opacity: 0;
+  animation: workflow-step 0.45s ease-out forwards;
+}
+
+.build-workflow-step:nth-child(1) { animation-delay: 0.1s; }
+.build-workflow-step:nth-child(2) { animation-delay: 0.4s; }
+.build-workflow-step:nth-child(3) { animation-delay: 0.7s; }
+.build-workflow-step:nth-child(4) { animation-delay: 1s; }
+.build-workflow-step:nth-child(5) { animation-delay: 1.3s; }
+
+.build-workflow-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: var(--teal);
+}
+
+.build-workflow-step.is-ai .build-workflow-dot {
+  background: #c4a35a;
+}
+
+.build-workflow-label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-medium);
+}
+
+.build-workflow-step.is-ai .build-workflow-label {
+  color: var(--teal);
+}
+
+@media (min-width: 768px) {
+  .build-workflow-track {
+    display: block;
+  }
+
+  .build-workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .build-workflow-step {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    text-align: center;
+  }
+}
+
+.ai-help-visual {
+  position: relative;
+  display: flex;
+  height: 3.25rem;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.ai-help-visual-whatsapp {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 0.35rem;
+}
+
+.ai-bubble {
+  display: block;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: #3d9a88;
+}
+
+:root[data-theme="dark"] .ai-bubble {
+  background: #75d2bd;
+}
+
+.ai-bubble-in {
+  width: 58%;
+  opacity: 0.45;
+}
+
+.ai-bubble-out {
+  width: 42%;
+  align-self: flex-end;
+  background: var(--teal);
+  animation: ai-bubble 3.6s ease-in-out infinite;
+}
+
+.ai-help-visual-bookings {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.ai-row {
+  display: block;
+  height: 0.45rem;
+  width: 100%;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+.ai-row.is-done {
+  width: 72%;
+  transform-origin: left center;
+  background: var(--teal);
+  animation: ai-check 3.2s ease-in-out infinite;
+}
+
+.ai-help-visual-reports {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.ai-line {
+  display: block;
+  height: 0.28rem;
+  width: 100%;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
+  transform-origin: left center;
+  animation: ai-condense 4s ease-in-out infinite;
+}
+
+.ai-line.is-short {
+  width: 64%;
+}
+
+.ai-summary {
+  display: block;
+  height: 0.45rem;
+  width: 48%;
+  border-radius: 999px;
+  background: #c4a35a;
+  opacity: 0;
+  animation: ai-summary 4s ease-in-out infinite;
+}
+
+.ai-help-visual-language {
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ai-lang,
+.ai-lang-swap {
+  display: inline-flex;
+  min-width: 2.4rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ai-lang {
+  background: var(--teal);
+  color: var(--accent-foreground);
+}
+
+.ai-lang-swap {
+  background: #c4a35a;
+  color: #15202b;
+  animation: ai-lang 4.2s ease-in-out infinite;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -257,11 +469,160 @@
   }
 }
 
+@keyframes workflow-step {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes workflow-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ai-bubble {
+  0%,
+  35% {
+    opacity: 0.25;
+    transform: translateY(0.25rem);
+  }
+  50%,
+  85% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.25;
+    transform: translateY(0.25rem);
+  }
+}
+
+@keyframes ai-check {
+  0%,
+  30% {
+    transform: scaleX(0.55);
+    opacity: 0.55;
+  }
+  45%,
+  80% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0.55);
+    opacity: 0.55;
+  }
+}
+
+@keyframes ai-condense {
+  0%,
+  35% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  55%,
+  80% {
+    opacity: 0.2;
+    transform: scaleY(0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes ai-summary {
+  0%,
+  35% {
+    opacity: 0;
+    transform: translateY(0.3rem);
+  }
+  55%,
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0.3rem);
+  }
+}
+
+@keyframes ai-lang {
+  0%,
+  40% {
+    opacity: 0.35;
+  }
+  50%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 767px) {
+  .build-workflow-progress {
+    animation: none;
+  }
+
+  .ai-bubble-out,
+  .ai-row.is-done,
+  .ai-line,
+  .ai-summary,
+  .ai-lang-swap {
+    animation-duration: 6s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fade-up,
   .fade-up-delay,
-  .network-drift {
+  .network-drift,
+  .build-workflow-step,
+  .build-workflow-progress,
+  .ai-bubble-out,
+  .ai-row.is-done,
+  .ai-line,
+  .ai-summary,
+  .ai-lang-swap {
     animation: none;
+  }
+
+  .build-workflow-step {
+    opacity: 1;
+    transform: none;
+  }
+
+  .build-workflow-progress {
+    transform: scaleX(1);
+  }
+
+  .ai-bubble-out,
+  .ai-summary,
+  .ai-lang-swap {
+    opacity: 1;
+    transform: none;
+  }
+
+  .ai-row.is-done {
+    transform: none;
+    opacity: 1;
+  }
+
+  .ai-line {
+    opacity: 1;
+    transform: none;
   }
 }

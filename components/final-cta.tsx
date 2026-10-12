@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { brand } from "@/lib/brand";
+import { contactHref } from "@/lib/playground";
 
 export function FinalCta() {
   return (
@@ -14,13 +16,24 @@ export function FinalCta() {
           </p>
         </div>
         <div className="flex flex-wrap gap-3">
-          <Link href="/contact" className="btn-on-dark shrink-0">
-            Talk to us
+          <a
+            href={contactHref("Hello Rweru! I’d like to discuss a project.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-on-dark shrink-0"
+          >
+            Talk on WhatsApp
             <span aria-hidden>→</span>
-          </Link>
+          </a>
+          <a
+            href={`mailto:${brand.email}`}
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-ivory/20 px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
+          >
+            Email us
+          </a>
           <Link
             href="/community"
-            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-ivory/20 px-5 py-2.5 text-sm font-medium text-ivory transition-colors hover:bg-ivory/10"
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-ivory/20 px-5 py-2.5 text-sm font-medium text-ivory/80 transition-colors hover:bg-ivory/10 hover:text-ivory"
           >
             Join the community
           </Link>
