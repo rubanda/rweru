@@ -1,6 +1,5 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
-import { HomeWhatsappStrip } from "@/components/home-whatsapp-strip";
 import { MissionBand } from "@/components/mission-band";
 import { ProductsShowcase } from "@/components/products-showcase";
 import { StudioShowcase } from "@/components/studio-showcase";
@@ -20,7 +19,6 @@ export default function Page() {
       <Header />
       <main>
         <Hero />
-        <HomeWhatsappStrip />
         <PlaygroundTeaser />
         <AiHelps />
         <MissionBand />

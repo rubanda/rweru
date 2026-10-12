@@ -301,10 +301,10 @@
 
 .build-workflow-label {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--ink-medium);
+  color: var(--ink);
 }
 
 .build-workflow-step.is-ai .build-workflow-label {
@@ -333,7 +333,7 @@
 .ai-help-visual {
   position: relative;
   display: flex;
-  height: 3.25rem;
+  height: 3.5rem;
   align-items: flex-end;
   overflow: hidden;
 }
@@ -574,6 +574,16 @@
 @media (max-width: 767px) {
   .build-workflow-progress {
     animation: none;
+  }
+
+  .build-workflow-step {
+    background: var(--paper);
+    border-radius: 999px;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .ai-help-visual {
+    height: 2.5rem;
   }
 
   .ai-bubble-out,

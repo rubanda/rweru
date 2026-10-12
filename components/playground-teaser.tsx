@@ -13,7 +13,7 @@ export function PlaygroundTeaser() {
         </p>
         <h2
           id="playground-heading"
-          className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl"
+          className="mt-4 max-w-[18ch] text-3xl font-semibold tracking-tight md:text-4xl"
         >
           What could we build for you?
         </h2>
@@ -24,16 +24,20 @@ export function PlaygroundTeaser() {
 
         <Link
           href="/playground/product-quiz"
-          className="group mt-9 flex max-w-xl flex-col rounded-2xl border border-white/20 bg-white/10 p-6 transition-colors hover:bg-white/15"
+          className="group mt-9 flex flex-col gap-5 rounded-2xl border border-white/20 bg-white/10 p-5 transition-colors hover:bg-white/15 sm:flex-row sm:items-center sm:justify-between sm:p-6"
         >
-          <Sparkles size={22} className="text-[#75d2bd]" aria-hidden />
-          <h3 className="mt-4 text-xl font-medium text-[#f7f9fb]">
-            Find your first build
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed text-[#dce6ef]">
-            Five questions · 1 starter plan
-          </p>
-          <span className="mt-6 inline-flex w-fit items-center gap-2 rounded-lg bg-[#75d2bd] px-5 py-3 text-sm font-medium text-[#15202b] group-hover:bg-[#a0e4d5]">
+          <span className="flex min-w-0 items-start gap-4">
+            <Sparkles size={22} className="mt-0.5 shrink-0 text-[#75d2bd]" aria-hidden />
+            <span>
+              <span className="block text-xl font-medium text-[#f7f9fb]">
+                Find your first build
+              </span>
+              <span className="mt-1 block text-sm leading-relaxed text-[#dce6ef]">
+                Five questions · 1 starter plan
+              </span>
+            </span>
+          </span>
+          <span className="inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-[#75d2bd] px-5 py-3 text-sm font-medium text-[#15202b] group-hover:bg-[#a0e4d5]">
             Find my starting point
             <ArrowUpRight size={16} aria-hidden />
           </span>
