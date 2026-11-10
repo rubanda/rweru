@@ -1,0 +1,641 @@
+import "server-only";
+
+import type { DashboardData, DashboardItem } from "@/lib/dashboard/types";
+
+const items: DashboardItem[] = [
+  {
+    id: "rdb",
+    name: "RDB certificate of incorporation",
+    group: "have",
+    status: "Have (Jul 2026)",
+    deadline: "Done",
+    cost: "Free",
+    route: "Online",
+    where: "RDB online registration, org.rdb.rw",
+    what: "Proves the company exists. The company code on it is also your TIN, and RDB registration automatically opened your income tax, quarterly income tax and trading licence accounts with RRA.",
+    docs: [
+      "Keep a PDF and a printed copy; banks, NCSA, RURA and clients will ask for it",
+    ],
+    steps: [
+      {
+        title: "Nothing to do",
+        detail:
+          "Keep it safe and update RDB if company details change (address, directors, shares).",
+      },
+    ],
+    time: "Done",
+    contact:
+      "RDB toll-free 1415, info.registrar@rdb.rw; support desk at RDB Building, KG 9 Ave, Kigali",
+  },
+  {
+    id: "etax",
+    name: "TIN confirmed + RRA e-Tax account",
+    group: "now",
+    status: "Missing",
+    deadline: "Now (needed for every filing)",
+    cost: "Free",
+    route: "Online",
+    where: "etax.rra.gov.rw",
+    what: "e-Tax is where the company files and pays taxes, and requests certificates. Your TIN already exists (company code on the RDB certificate); you only need to activate access.",
+    docs: [
+      "TIN (company code on the RDB certificate)",
+      "National ID of the director registered at RDB",
+      "The phone number used at RDB registration",
+    ],
+    steps: [
+      { title: "Open etax.rra.gov.rw", detail: "Choose Create an account." },
+      {
+        title: "Enter TIN, national ID and phone",
+        detail: "Use the same phone as at RDB.",
+      },
+      {
+        title: "Receive the password",
+        detail:
+          "RRA sends it by SMS/email. If the phone changed, use Update phone number on the same site.",
+      },
+      {
+        title: "Log in and check tax types",
+        detail:
+          "Confirm which accounts are open (income tax, trading licence; VAT should not be there).",
+      },
+    ],
+    time: "Minutes if the phone matches",
+    contact: "RRA call centre 3004, WhatsApp +250 739 008 010",
+  },
+  {
+    id: "ebm",
+    name: "EBM (electronic invoicing) software",
+    group: "now",
+    status: "Missing",
+    deadline: "Before your first invoice",
+    cost: "Free",
+    route: "Online",
+    where: "MyRRA, myrra.rra.gov.rw (Service request → EBM2.1)",
+    what: "Every invoice to a client must come from an RRA-certified EBM. A non-VAT company that sells without an EBM invoice can be fined 2 times the transaction value. For you, the EBM Mobile app (non-VAT, under RWF 20M, new taxpayer) or Online EBM (services, up to 10 invoices a month) fit best.",
+    docs: [
+      "TIN and the director's national ID (for MyRRA sign-up)",
+      "The documents the EBM request form asks you to attach (confirm the list with RRA 3004)",
+      "An Android phone or Windows computer to install it on",
+    ],
+    steps: [
+      {
+        title: "Sign up on MyRRA",
+        detail:
+          "myrra.rra.gov.rw → Sign up → enter TIN → verify with national ID → set password → confirm the SMS code.",
+      },
+      {
+        title: "Request EBM",
+        detail:
+          "Log in → Service request (top right) → EBM2.1 → choose the EBM type → attach documents → Send.",
+      },
+      {
+        title: "Wait for approval",
+        detail: "You get a message: MyRRA Service Request was approved.",
+      },
+      {
+        title: "Register your device and download",
+        detail:
+          "Register the device model and serial number, download and install, then sign in with TIN, branch ID (00) and serial.",
+      },
+      {
+        title: "Issue a test invoice",
+        detail:
+          "Check your TIN and name show correctly before invoicing a client.",
+      },
+    ],
+    time: "Depends on RRA approval; confirm with RRA",
+    contact: "RRA 3004, info@rra.gov.rw",
+  },
+  {
+    id: "ncsa",
+    name: "NCSA data controller + processor certificates",
+    group: "now",
+    status: "Missing",
+    deadline: "Now (before processing personal data)",
+    cost: "Free",
+    route: "Online (by email)",
+    where: "dpo.gov.rw → Services → Data Controller / Data Processor Certificate",
+    what: "Masata, Ibara, client websites and the rweru.com quiz all hold personal data. The law requires registration; operating without a certificate can be fined RWF 2M–5M or 1% of turnover. You are both a controller (your own users, staff, leads) and a processor (data you handle for clients), so file both forms.",
+    docs: [
+      "Controller form and processor form (download from dpo.gov.rw)",
+      "Letter addressed to the CEO of NCSA",
+      "RDB certificate of incorporation",
+      "RURA licence/NOC if you have one",
+      "Supporting documents, e.g. your privacy notice and contracts with clients/processors",
+    ],
+    steps: [
+      {
+        title: "Download both forms",
+        detail: "From the Services pages on dpo.gov.rw.",
+      },
+      {
+        title: "Fill them in",
+        detail:
+          "List the data types, purposes, recipients, and countries where data is stored or sent (e.g. your cloud hosting).",
+      },
+      {
+        title: "Sign, convert to PDF, zip",
+        detail: "Put the organisation name in the email subject.",
+      },
+      {
+        title: "Email the zip",
+        detail: "To registration@dpo.gov.rw and dpp@ncsa.gov.rw.",
+      },
+      {
+        title: "Watch for a reply",
+        detail:
+          "If anything is missing NCSA writes within 7 working days; otherwise the certificate comes by email.",
+      },
+    ],
+    time: "Up to 30 working days after a complete application",
+    contact:
+      "NCSA, 21 KG 7 Ave, Kacyiru, A&P Building, ground floor; +250 782 847 756; toll-free 9080",
+  },
+  {
+    id: "abroad",
+    name: "NCSA authorisation to store/transfer data outside Rwanda",
+    group: "now",
+    status: "Missing",
+    deadline: "With the NCSA application",
+    cost: "Free",
+    route: "Online",
+    where: "dpo.gov.rw → Services → Authorization to Store / Transfer Outside Rwanda",
+    what: "The law says personal data is stored in Rwanda unless your certificate authorises storage abroad. If Masata or Ibara run on AWS, Vercel, Google or similar outside Rwanda, you need this.",
+    docs: [
+      "The NCSA application above",
+      "Where the data is hosted and the safeguards used",
+      "Contracts with the hosting providers",
+    ],
+    steps: [
+      {
+        title: "List where each system is hosted",
+        detail: "Masata, Ibara, client sites, email, backups.",
+      },
+      {
+        title: "Declare it in the NCSA forms",
+        detail:
+          "And use the dpo.gov.rw authorisation service pages for the specific request.",
+      },
+    ],
+    time: "Together with the certificate",
+    contact: "registration@dpo.gov.rw, toll-free 9080",
+  },
+  {
+    id: "privacy",
+    name: "Privacy notice + data protection contact",
+    group: "now",
+    status: "Missing",
+    deadline: "Now",
+    cost: "Free",
+    route: "Internal",
+    where: "Your websites and apps",
+    what: "You must tell people who you are, why you collect their data and who receives it, and name a data protection contact. NCSA also asks for the privacy notice with the application.",
+    docs: [
+      "Privacy notice on rweru.com, Masata and Ibara",
+      "Breach plan: notify NCSA within 48 hours, full report within 72 hours",
+    ],
+    steps: [
+      {
+        title: "Write one privacy notice",
+        detail: "Publish it on each site and app.",
+      },
+      {
+        title: "Name a data protection contact",
+        detail:
+          "Can be you at first; confirm with NCSA if a separate officer is needed.",
+      },
+    ],
+    time: "1–2 days",
+    contact: "NCSA toll-free 9080",
+  },
+  {
+    id: "rura",
+    name: "RURA check: licence or NOC for Ibara/Masata",
+    group: "now",
+    status: "To check",
+    deadline: "Before charging for Ibara/Masata",
+    cost: "NOC: free (portal). ASP licence: USD 100 + USD 1,000 for 5 years",
+    route: "Online",
+    where: "licensing.rura.rw (RURA licensing platform)",
+    what: "RURA's 2021 rules list e-commerce platforms and online application services under an Application Service Provider licence. Small operators (turnover under RWF 20M, under 100,000 users) may get a Non-Objection Certificate instead. Custom software built for clients is not listed.",
+    docs: [
+      "RDB certificate",
+      "ID or passport of the legal representative",
+      "Business plan",
+      "End-user terms template",
+      "Service level (quality) template",
+      "Complaint handling policy",
+    ],
+    steps: [
+      { title: "Create an account on licensing.rura.rw" },
+      { title: "Register the operator (your company)" },
+      {
+        title: "Choose the service and licence type",
+        detail: "Click Search to see the exact requirements, then Start application.",
+      },
+      {
+        title: "Upload documents and submit",
+        detail: "Pay any application fee; unpaid applications stay pending.",
+      },
+      { title: "Download the document when approved" },
+    ],
+    time: "Within 30 days (RURA portal)",
+    contact:
+      "Confirm the right category with RURA through the portal before applying",
+  },
+  {
+    id: "bank",
+    name: "Company bank account",
+    group: "now",
+    status: "Missing",
+    deadline: "Before the first client payment",
+    cost: "Bank tariffs",
+    route: "In person",
+    where: "A branch of your chosen bank",
+    what: "Keeps company money separate from personal money and makes the accounts and tax returns simple.",
+    docs: [
+      "RDB certificate",
+      "Directors' national IDs",
+      "Other company documents the bank asks for (confirm with the bank)",
+    ],
+    steps: [
+      {
+        title: "Pick a bank and ask its business desk for the list",
+        detail: "Lists differ by bank.",
+      },
+      { title: "Visit the branch with the documents" },
+    ],
+    time: "Confirm with the bank",
+    contact: "Your bank",
+  },
+  {
+    id: "momo",
+    name: "Mobile money merchant account (company name)",
+    group: "now",
+    status: "Missing",
+    deadline: "Before the first client payment",
+    cost: "Telco tariffs",
+    route: "In person",
+    where: "MTN or Airtel service centre (confirm the process with them)",
+    what: "Lets clients pay the company by MoMo/Airtel Money. Every payment still needs an EBM invoice.",
+    docs: [
+      "RDB certificate",
+      "Director's national ID",
+      "Whatever else MTN/Airtel ask for (confirm with them)",
+    ],
+    steps: [
+      { title: "Ask MTN/Airtel for business merchant registration" },
+      { title: "Register in the company name, not your personal number" },
+    ],
+    time: "Confirm with MTN/Airtel",
+    contact: "MTN / Airtel customer service",
+  },
+  {
+    id: "contract",
+    name: "Client contract + invoice template",
+    group: "now",
+    status: "Missing",
+    deadline: "Before the first paid project",
+    cost: "Free (lawyer review optional)",
+    route: "Internal",
+    where: "Your own documents",
+    what: "Protects you on scope, payment and who owns the code. Prices for local clients must be in RWF.",
+    docs: [
+      "Scope and milestones",
+      "Price in RWF, payment terms, your TIN",
+      "IP: client owns the deliverable on full payment; you keep reusable components",
+      "Data processing clause (you handle client data)",
+      "Liability limit, termination, Rwandan law",
+    ],
+    steps: [
+      { title: "Draft one standard agreement" },
+      { title: "Have a lawyer review it once" },
+      { title: "Reuse it for every client" },
+    ],
+    time: "A few days",
+    contact: "A Rwandan business lawyer",
+  },
+  {
+    id: "accountant",
+    name: "Accountant engagement",
+    group: "now",
+    status: "Missing",
+    deadline: "Now",
+    cost: "Market rate (get 2–3 quotes)",
+    route: "In person or online",
+    where: "A certified accountant",
+    what: "Keeps the books from July 2026, prepares the March 2027 tax return and the July 2027 accounts, and answers the audit question.",
+    docs: [
+      "RDB certificate",
+      "e-Tax access",
+      "Bank and MoMo statements, EBM invoices, receipts",
+    ],
+    steps: [
+      { title: "Ask 2–3 accountants for quotes" },
+      { title: "Agree a monthly bookkeeping routine" },
+    ],
+    time: "1–2 weeks",
+    contact: "Accountant of your choice",
+  },
+  {
+    id: "registers",
+    name: "Share register, beneficial owners, minutes",
+    group: "now",
+    status: "To set up",
+    deadline: "Now; update BO within 14 days of any change",
+    cost: "Free",
+    route: "Internal + Online",
+    where:
+      "Kept at the registered office; changes filed on the RDB portal (org.rdb.rw)",
+    what: "The Companies Law requires a share register, a register of beneficial owners and minutes of decisions, kept for 10 years. Beneficial owner changes go to RDB within 14 days.",
+    docs: [
+      "Shareholder list and shares held",
+      "Beneficial owner details",
+      "Board/shareholder resolutions",
+    ],
+    steps: [
+      { title: "Create the registers (a simple file is fine)" },
+      { title: "File any change on the RDB portal within 14 days" },
+    ],
+    time: "1 hour",
+    contact: "RDB 1415, info.registrar@rdb.rw",
+  },
+  {
+    id: "patente",
+    name: "Trading licence (patente) exemption confirmation",
+    group: "now",
+    status: "To confirm",
+    deadline: "Before 31 Jan 2027",
+    cost: "Free while exempt; then RWF 100,000+/year",
+    route: "Online or phone",
+    where:
+      "RRA local government taxes (via rra.gov.rw online services) or your district RRA tax centre",
+    what: "Micro and small businesses (turnover up to RWF 20M) are exempt for the first 2 years, so likely until about July 2028. Confirm the exemption shows on your account so you get no 2027 bill.",
+    docs: ["TIN and e-Tax password"],
+    steps: [
+      {
+        title: "Log in to RRA local government taxes",
+        detail: "rra.gov.rw → Online services → District revenues.",
+      },
+      { title: "Check the trading licence account for 2026/2027" },
+      {
+        title: "If it shows tax due, call RRA",
+        detail: "Ask them to apply the 2-year micro/small exemption.",
+      },
+    ],
+    time: "Minutes",
+    contact:
+      "RRA 3004; Kigali tax centres: Gasabo 078818 5784, Kicukiro 078818 5579, Nyarugenge 078818 5515",
+  },
+  {
+    id: "cit",
+    name: "2026 corporate income tax return",
+    group: "later",
+    status: "Not due yet",
+    deadline: "31 Mar 2027",
+    cost: "Under RWF 2M turnover: 0; 2–4M: 60,000; 4–7M: 120,000",
+    route: "Online",
+    where: "etax.rra.gov.rw (or M-Declaration)",
+    what: "Your first income tax return, covering Jul–Dec 2026. With turnover under RWF 5M the tax is a flat amount or zero, but file anyway.",
+    docs: [
+      "Sales records / EBM invoices",
+      "Financial statements from your accountant",
+    ],
+    steps: [
+      { title: "Accountant prepares the figures (Jan–Feb 2027)" },
+      { title: "Declare on e-Tax and pay by 31 March" },
+    ],
+    time: "1 day once books are ready",
+    contact: "RRA 3004",
+  },
+  {
+    id: "accounts",
+    name: "2026 annual accounts to RDB",
+    group: "later",
+    status: "Not due yet",
+    deadline: "31 Jul 2027",
+    cost: "Accountant/auditor fees",
+    route: "Online",
+    where: "RDB system (org.rdb.rw)",
+    what: "Signed accounts and directors' report (and auditor's report) within 7 months of year-end. Each director risks RWF 1M–10M if they are not delivered.",
+    docs: [
+      "Approved annual accounts",
+      "Directors' report",
+      "Auditor's report (law requires an auditor; confirm with your accountant)",
+    ],
+    steps: [
+      { title: "Accountant/auditor finalises accounts" },
+      { title: "Upload on the RDB system" },
+    ],
+    time: "Depends on the audit",
+    contact: "RDB 1415",
+  },
+  {
+    id: "annualreturn",
+    name: "RDB annual return (first one)",
+    group: "later",
+    status: "Not due yet",
+    deadline: "Your RDB-allocated month in 2027",
+    cost: "No official fee found; confirm with RDB",
+    route: "Online",
+    where: "RDB online portal (org.rdb.rw)",
+    what: "Confirms each year that RDB's records are correct: office, directors, shareholders and beneficial owners. Not filing can lead to removal from the register.",
+    docs: [
+      "Current shareholder and director details",
+      "Beneficial owner details",
+    ],
+    steps: [
+      {
+        title: "Find your allocated month",
+        detail: "Check RDB notices or ask RDB (1415).",
+      },
+      { title: "Log in to the RDB portal and file the return" },
+    ],
+    time: "Under an hour",
+    contact: "RDB 1415, info.registrar@rdb.rw",
+  },
+  {
+    id: "auditor",
+    name: "Auditor appointment",
+    group: "later",
+    status: "To decide",
+    deadline: "Before mid-2027",
+    cost: "Market rate",
+    route: "In person or online",
+    where: "A certified audit firm",
+    what: "The Companies Law says every non-dormant company appoints an external auditor. Ask your accountant how this applies to a very small company before paying for one.",
+    docs: ["Board decision appointing the first auditor"],
+    steps: [
+      { title: "Ask the accountant" },
+      { title: "If needed, get quotes and appoint by board decision" },
+    ],
+    time: "1–2 weeks",
+    contact: "Your accountant",
+  },
+  {
+    id: "tcc",
+    name: "Tax clearance certificate",
+    group: "later",
+    status: "When a client or tender asks",
+    deadline: "On request (from 2027)",
+    cost: "RWF 5,000",
+    route: "Online",
+    where:
+      "etax.rra.gov.rw → TCC, Quitus & Other applications → Apply here",
+    what: "Shows you have no tax arrears. Needed for tenders, loans, and from 2027 to stop clients withholding 15% from your payments. Valid 3 months.",
+    docs: ["e-Tax login", "No tax arrears"],
+    steps: [
+      { title: "Log in to e-Tax" },
+      { title: "Open TCC, Quitus & Other applications → Apply here" },
+      { title: "Choose TCC, give the reason, submit" },
+      {
+        title: "Pay RWF 5,000 the same day",
+        detail: "MoMo, Airtel Money or bank, using the payment reference.",
+      },
+      { title: "Download the certificate from e-Tax" },
+    ],
+    time: "About 15 minutes",
+    contact: "RRA 3004",
+  },
+  {
+    id: "vat",
+    name: "VAT registration",
+    group: "if",
+    status: "Not needed now (turnover < RWF 5M/quarter)",
+    deadline:
+      "Within 7 days after a quarter > RWF 5M or a year > RWF 20M",
+    cost: "Free to register; then 18% VAT on local sales",
+    route: "Online",
+    where:
+      "RDB online portal (request VAT) or RRA; confirm the current route with RRA 3004",
+    what: "Compulsory once turnover passes the threshold; voluntary before. Once registered you file quarterly VAT returns, even with zero sales.",
+    docs: ["TIN and RDB certificate", "Expected turnover", "Director's ID"],
+    steps: [
+      { title: "Watch quarterly turnover" },
+      {
+        title: "If it passes RWF 5M, request VAT on the RDB portal within 7 days",
+      },
+      { title: "Switch EBM to VAT mode" },
+    ],
+    time: "Confirm with RRA",
+    contact: "RRA 3004",
+  },
+  {
+    id: "rssb",
+    name: "RSSB / Ishema employer account + PAYE",
+    group: "if",
+    status: "Not needed now (no employees)",
+    deadline: "Within 7 working days of the first hire",
+    cost: "Pension 12% (14% from Jan 2027), maternity 0.6%, hazards 2%, CBHI 0.5%, PAYE",
+    route: "Online",
+    where: "ishema.rssb.rw",
+    what: "RDB says an RSSB employer number is assigned automatically at registration; you add employees on Ishema when you hire. PAYE and RSSB are then declared there.",
+    docs: [
+      "TIN / company code",
+      "Each employee's ID and salary details",
+      "Written employment contracts",
+    ],
+    steps: [
+      { title: "Log in or register on ishema.rssb.rw" },
+      { title: "Add each employee within 7 working days" },
+      { title: "Declare and pay by the 15th" },
+    ],
+    time: "Minutes per employee",
+    contact: "RSSB via ishema.rssb.rw; RRA 3004 for PAYE",
+  },
+  {
+    id: "labour",
+    name: "Labour inspector declaration",
+    group: "if",
+    status: "Not needed now",
+    deadline: "Within 1 month of starting with staff",
+    cost: "Free",
+    route: "In person / in writing",
+    where:
+      "Labour inspectorate of your district (confirm the office with your district)",
+    what: "The Labour Law requires an employer to declare the enterprise and its staff in writing to the local labour inspector. Rules of procedure are needed at 5 or more employees.",
+    docs: ["Written declaration letter", "Employee list"],
+    steps: [
+      { title: "Ask your district office for the labour inspector" },
+      { title: "Submit the written declaration" },
+    ],
+    time: "Confirm with the district",
+    contact: "Your district office",
+  },
+  {
+    id: "psp",
+    name: "Licensed payment provider for Ibara",
+    group: "if",
+    status: "If Ibara takes payments",
+    deadline: "Before launching payments",
+    cost: "Provider fees",
+    route: "Online",
+    where: "Your chosen licensed payment provider; BNR rules at bnr.rw",
+    what: "Collecting buyers' money and paying artists is a payment service BNR licenses. Use a licensed provider that pays sellers directly instead of holding funds yourself.",
+    docs: ["RDB certificate", "Provider's onboarding documents"],
+    steps: [
+      { title: "Choose a BNR-licensed provider" },
+      { title: "Set up split or direct payouts to artists" },
+    ],
+    time: "Confirm with the provider",
+    contact: "BNR, bnr.rw",
+  },
+];
+
+export const dashboardData: DashboardData = {
+  title: "RweruSynapse — Documents dashboard",
+  summary:
+    "Which company documents and registrations RweruSynapse has, which it still needs, and how to get each one: online or in person, what to bring, steps, time and contact.",
+  asOf: "Status recorded 10 Nov 2026 (Kigali time): only the RDB certificate is in hand; no salaries, no invoices, turnover under RWF 5M, not VAT-registered, no employees.",
+  items,
+  sources: [
+    "https://org.rdb.rw/obligations-of-a-taxpayer-who-registering-business/",
+    "https://www.rra.gov.rw/fileadmin/Folder_for_2025/RRA_Tax_Handbook_2025.pdf",
+    "https://myrra.rra.gov.rw/main/signup/indexLearnMore",
+    "https://www.rra.gov.rw/fileadmin/user_upload/ebm_acquisition_user_guide_ok.pdf",
+    "https://www.rra.gov.rw/en/domestic-tax-services/other-services/apply-for-tcc",
+    "https://dpo.gov.rw/fileadmin/DPO/ComplianceTools/-_registration-guide-for-data-controller-and-processor__1_.pdf",
+    "https://licensing.rura.rw/",
+    "https://businessprocedures.rdb.rw/menu/179?l=en",
+  ],
+  portals: [
+    {
+      title: "RRA e-Tax (file, pay, certificates)",
+      site: "etax.rra.gov.rw",
+      href: "https://etax.rra.gov.rw",
+    },
+    {
+      title: "MyRRA (EBM requests)",
+      site: "myrra.rra.gov.rw",
+      href: "https://myrra.rra.gov.rw",
+    },
+    {
+      title: "RRA contact: HQ Silverback Mall, Kicukiro-Sonatube; call 3004",
+      site: "rra.gov.rw",
+      href: "https://www.rra.gov.rw/en/contact-us",
+    },
+    {
+      title: "RDB Office of the Registrar General (RDB Building, KG 9 Ave)",
+      site: "org.rdb.rw",
+      href: "https://org.rdb.rw",
+    },
+    {
+      title: "NCSA data protection office (21 KG 7 Ave, Kacyiru)",
+      site: "dpo.gov.rw",
+      href: "https://dpo.gov.rw",
+    },
+    {
+      title: "RSSB Ishema (employers)",
+      site: "ishema.rssb.rw",
+      href: "https://ishema.rssb.rw/en",
+    },
+    {
+      title: "RURA licensing platform",
+      site: "licensing.rura.rw",
+      href: "https://licensing.rura.rw",
+    },
+  ],
+  noteLead: "Research, not legal or tax advice.",
+  noteBody:
+    "Confirm with RRA (call 3004) or a certified accountant before acting. None of these items needed Irembo in what I found; each is done on the agency's own portal. Tell me when something is done and I'll update this page.",
+};
