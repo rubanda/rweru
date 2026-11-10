@@ -37,6 +37,41 @@ a Kigali clock, and a rotating shipping ticker with a pause control.
   not a live activity feed. The clock's office-hours indicator is Monday–Friday,
   09:00–18:00 `Africa/Kigali`; it does not claim live staff presence.
 
+## Private documents dashboard
+
+`/dashboard` lists RweruSynapse legal and tax documents. It is not linked from
+the header, footer, or sitemap, and it is `noindex, nofollow`. Sign-in is at
+`/login`. Credentials stay in environment variables, never in the repo.
+
+### Set this up on Vercel
+
+1. Generate a password hash locally (do not commit the password):
+
+   ```bash
+   node scripts/hash-password.mjs "your-password"
+   ```
+
+2. Generate a session secret (at least 32 characters):
+
+   ```bash
+   openssl rand -base64 48
+   ```
+
+3. In the Vercel project → **Settings** → **Environment Variables**, add these
+   as **Sensitive** for Production, Preview, and Development:
+
+   | Name | Value |
+   | --- | --- |
+   | `DASHBOARD_EMAIL` | The owner's login email |
+   | `DASHBOARD_PASSWORD_HASH` | The bcrypt hash from step 1 |
+   | `SESSION_SECRET` | The random string from step 2 |
+
+4. Redeploy so the new variables take effect.
+
+If any of those variables are missing, login fails closed and `/dashboard`
+redirects to `/login`. Sessions are a signed, httpOnly, Secure, SameSite=Lax
+cookie that expires after 7 days.
+
 Run `npm run lint`, `npm test`, and `npm run build` to verify changes. Tests use
 Node 24's built-in runner and cover product recommendations, estimates, contact
 validation, mocked email delivery, rate limits, and public-address validation.
