@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Logo } from "@/components/logo";
+import { Logo, RsBadgeMark } from "@/components/logo";
 import { NewsletterForm } from "@/components/newsletter-form";
 import { brand, socialLinks } from "@/lib/brand";
 import { KigaliClock } from "@/components/kigali-clock";
@@ -119,9 +119,17 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col justify-between gap-4 border-t border-ivory/10 pt-6 md:flex-row md:items-center">
-          <p className="text-meta text-cloud">
-            © {new Date().getFullYear()} {brand.company}. All rights reserved.
-          </p>
+          <div className="flex items-center gap-3">
+            <span
+              className="inline-flex items-center rounded-md border border-ivory/15 bg-ivory/5 px-2 py-1 text-ivory/80"
+              title={`${brand.company} (${brand.mark})`}
+            >
+              <RsBadgeMark className="h-3.5 w-auto" aria-label={brand.mark} />
+            </span>
+            <p className="text-meta text-cloud">
+              © {new Date().getFullYear()} {brand.company}. All rights reserved.
+            </p>
+          </div>
           <KigaliClock dark />
         </div>
       </div>
