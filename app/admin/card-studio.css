@@ -1,0 +1,102 @@
+/* Standard 3.5" x 2" (85mm x 55mm) Business Card Proportions */
+.business-card {
+  aspect-ratio: 3.5 / 2;
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  border-radius: 14px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+
+/* Obsidian Matte Black Card Stock */
+.stock-obsidian {
+  background-color: #101115;
+  background-image:
+    radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.045) 0%, transparent 55%),
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 100% 100%, 4px 4px;
+  color: #f4f4f6;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  box-shadow:
+    0 24px 48px -12px rgba(0, 0, 0, 0.42),
+    0 8px 20px -6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Architectural Warm White Cotton Card Stock */
+.stock-cotton {
+  background-color: #f6f5f0;
+  background-image:
+    radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.75) 0%, transparent 60%),
+    radial-gradient(rgba(17, 24, 39, 0.032) 1px, transparent 0);
+  background-size: 100% 100%, 4px 4px;
+  color: #111318;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  box-shadow:
+    0 24px 48px -12px rgba(17, 24, 39, 0.14),
+    0 8px 20px -6px rgba(17, 24, 39, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Print Crop & Bleed Marks Overlay */
+.crop-mark {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.show-crops .crop-mark {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .business-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Print-Ready Stylesheet (@media print) */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-sheet {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 14mm !important;
+    padding-top: 12mm !important;
+    width: 100% !important;
+  }
+
+  .business-card {
+    width: 85mm !important;
+    height: 55mm !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

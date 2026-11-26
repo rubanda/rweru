@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://rweru.com";
 
-const privatePaths = ["/dashboard", "/login", "/api/dashboard"];
+const privatePaths = ["/dashboard", "/admin", "/login", "/api/dashboard"];
 
 function allowPublic(userAgent: string) {
   return {
